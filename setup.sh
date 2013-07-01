@@ -17,7 +17,7 @@ check_status
 $cwd/bin/setup-package-install.sh
 check_status
 
-$cwd/bin/setup-minicom.sh
+sudo $cwd/bin/setup-minicom.sh
 check_status
 
 $cwd/bin/setup-uboot-env.sh
@@ -28,6 +28,15 @@ check_status
 
 $cwd/bin/setup-repo.sh
 check_status
+
+echo "Do you want to fetch all the sources y/N "
+read -p "[ n ]" choice
+if [  ! -n "$choice" ]; then
+    choice="n"
+fi
+if [ $choice = "y" -o $choice = "Y" ]; then
+    $cwd/bin/fetch-sources.sh
+fi
 
 echo
 echo "TISDK setup completed!"
