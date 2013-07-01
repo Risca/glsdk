@@ -2,7 +2,7 @@
 PLATFORM=dra7xx
 REVISION=ES10
 DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
-DEFAULT_DTB_NAME=dra7-evm
+DEFAULT_DTB_NAME=dra7-evm.dtb
 
 # Cross compiler used for building linux and u-boot
 CROSS_COMPILE_PREFIX=arm-linux-gnueabihf-
