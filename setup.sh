@@ -39,6 +39,10 @@ if [  ! -n "$choice" ]; then
 fi
 if [ $choice = "y" -o $choice = "Y" ]; then
     $cwd/bin/fetch-sources.sh
+
+    #To be removed in the next release
+    cd yocto-layers
+    git am patches/0001-configs-glsdk-6.01.00-Update-commitids-for-staged-tr.patch
 fi
 
 echo

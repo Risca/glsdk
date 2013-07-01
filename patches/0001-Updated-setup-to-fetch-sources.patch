@@ -1,0 +1,42 @@
+From c52a518b3798655eeda3862b1632deb8ba3a5fa7 Mon Sep 17 00:00:00 2001
+From: Karthik Ramanan <a0393906@ti.com>
+Date: Mon, 1 Jul 2013 23:04:23 +0530
+Subject: [PATCH] Updated setup to fetch sources
+
+Signed-off-by: Karthik Ramanan <a0393906@ti.com>
+---
+ setup.sh |   11 ++++++++++-
+ 1 files changed, 10 insertions(+), 1 deletions(-)
+
+diff --git a/setup.sh b/setup.sh
+index de8fbf5..8b6eeb7 100755
+--- a/setup.sh
++++ b/setup.sh
+@@ -20,7 +20,7 @@ check_status
+ $cwd/bin/setup-targetfs-nfs.sh
+ check_status
+ 
+-$cwd/bin/setup-minicom.sh
++sudo $cwd/bin/setup-minicom.sh
+ check_status
+ 
+ $cwd/bin/setup-uboot-env.sh
+@@ -32,6 +32,15 @@ check_status
+ $cwd/bin/setup-repo.sh
+ check_status
+ 
++echo "Do you want to fetch all the sources y/N "
++read -p "[ n ]" choice
++if [  ! -n "$choice" ]; then
++    choice="n"
++fi
++if [ $choice = "y" -o $choice = "Y" ]; then
++    $cwd/bin/fetch-sources.sh
++fi
++
+ echo
+ echo "TISDK setup completed!"
+ echo "Please continue reading the Software Developer's Guide for more information on"
+-- 
+1.7.7.1.msysgit.0
+
