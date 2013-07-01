@@ -4,6 +4,7 @@ cwd=`dirname $0`
 . $cwd/common.sh
 
 ccdefault="${HOME}"
+ccbinary="gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux"
 
 echo
 echo "--------------------------------------------------------------------------------"
@@ -32,11 +33,11 @@ fetch_cc() {
     check_status
     wget --no-check-certificate $ccBinaryURL
     check_status
-    tar -jxvf gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2 -C $1
+    tar -jxvf "$ccbinary.tar.bz2" -C $1
     check_status
     echo
     echo "Successfully extracted the cross compiler to $1"
-    sed -i "s=^CROSS_COMPILE_PREFIX.*$=CROSS_COMPILE_PREFIX\=$1/bin/arm-linux-gnueabihf-=g" $cwd/../Rules.make
+    sed -i "s=^CROSS_COMPILE_PREFIX.*$=CROSS_COMPILE_PREFIX\=$1/$ccbinary/bin/arm-linux-gnueabihf-=g" $cwd/../Rules.make
 }
 
     fetch_cc $dst
