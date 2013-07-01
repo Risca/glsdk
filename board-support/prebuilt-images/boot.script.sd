@@ -1,0 +1,6 @@
+mmc part
+fatload mmc 0:1 0x825f0000 omap5-uevm.dtb
+fatload mmc 0:1 0x80300000 uImage
+setenv bootargs 'elevator=noop console=ttyO2,115200n8 root=/dev/mmcblk0p2 rw rootwait earlyprintk fixrtc ip=dhcp'
+setenv fdt_high 0x84000000
+bootm 0x80300000 - 0x825f0000
