@@ -1,8 +1,6 @@
 # Define target platform.
 PLATFORM=omap5
 REVISION=ES20
-KERNEL_VERSION=3.8.13
-UBOOT_VERSION=2013.04
 DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
 DEFAULT_DTB_NAME=omap5-uevm.dtb
 
@@ -16,11 +14,11 @@ GLSDK_INSTALL_DIR=$(shell pwd)
 DVSDK_INSTALL_DIR=$(GLSDK_INSTALL_DIR)
 
 # The directory that points to your kernel source directory.
-LINUXKERNEL_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/linux_$(KERNEL_VERSION)
+LINUXKERNEL_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/linux
 KERNEL_INSTALL_DIR=$(LINUXKERNEL_INSTALL_DIR)
 
 # The directory that points to your u-boot source directory.
-UBOOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/u-boot_$(UBOOT_VERSION)
+UBOOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/u-boot
 
 # Kernel/U-Boot build variables
 LINUXKERNEL_BUILD_VARS = ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE_PREFIX)
