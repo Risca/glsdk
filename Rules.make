@@ -2,6 +2,7 @@
 PLATFORM=omap5
 REVISION=ES20
 DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
+DEFAULT_UBOOT_CONFIG=omap5_uevm_config
 DEFAULT_DTB_NAME=omap5-uevm.dtb
 
 # Cross compiler used for building linux and u-boot
