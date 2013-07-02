@@ -37,6 +37,14 @@ fetch_cc() {
     check_status
     echo
     echo "Successfully extracted the cross compiler to $1"
+
+    uname -m | grep 64 2>&1 >/dev/null
+    if [ $? -eq "0" ]; then
+        echo "You seem to have 64 bit ubuntu, installing ia32-libs..."
+        sudo apt-get install ia32-libs -y
+    fi
+
+    echo "Updating cross compiler used by Makefile"
     sed -i "s=^CROSS_COMPILE_PREFIX.*$=CROSS_COMPILE_PREFIX\=$1/$ccbinary/bin/arm-linux-gnueabihf-=g" $cwd/../Rules.make
 }
 
