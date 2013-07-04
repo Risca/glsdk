@@ -80,7 +80,7 @@ sfgSaveAndContinueSummary="Saved using \"Save and continue\" button in form";
 <script>
 var wgLTEMessages = {"livetranslate-button-translate":"Translate","livetranslate-button-translating":"Translating...","livetranslate-dictionary-error":"Could not obtain the live translate dictionary. No words will be treated as special during the translation process.","livetranslate-button-revert":"Show original","livetranslate-translate-to":"Translate this page to"};
 </script>
-<script>var ltMsAppId = "Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=tiwiki&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&Audience=http%3a%2f%2fapi.microsofttranslator.com&ExpiresOn=1372699898&Issuer=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&HMACSHA256=%2fn%2fjb73FBArUqkUaJjdk3u0Br4oK34gciQ1qUWI0Xw8%3d";</script>
+<script>var ltMsAppId = "Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=tiwiki&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&Audience=http%3a%2f%2fapi.microsofttranslator.com&ExpiresOn=1372935555&Issuer=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&HMACSHA256=OkwZoGVQX4rizCDm8tXYemOnMIEwqbI6NumKS6AP6Uc%3d";</script>
 <script src="../skins/common/ajax.js%3F270"></script>
 <!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/ti/csshover.htc")}</style><![endif]-->
 <script src="../index.php%3Ftitle=-&amp;action=raw&amp;gen=js&amp;useskin=ti&amp;270"></script>
@@ -5943,9 +5943,10 @@ tiPageName = 'DRA7xx_GLSDK_Software_Developers_Guide';
 The GLSDK comes with a script for setting up your Ubuntu 12.04 LTS development host. It is an interactive script, but if you accept the defaults by pressing return you will use the recommended settings. This is recommended for first time users. Note that this script requires ethernet access as it will update your Ubuntu Linux development host with the packages required to develop using the GLSDK.
 <br />
 <b>Note: Please make sure that the proxy settings are done for http, https, git, ftp and wget before proceeding further.</b> <br />
-Execute the script using:
+Execute the script in the GLSDK release directory using:
 </p>
-<pre><b>host $</b>  ${GLSDK}/setup.sh
+<pre><b>host $</b> cd ${GLSDK}
+<b>host $</b> ./setup.sh
 </pre>
 <p>The setup script would perform the following operations:
 </p>
@@ -5956,7 +5957,7 @@ Execute the script using:
 </li><li> Initialize the repo by pointing it to GLSDK release manifest location.
 </li></ol>
 <p>To start minicom on your Linux development host execute <i>minicom -w</i> (or Tera Term on Windows).
-</p><p><b>Step 5: </b> Prepare SD card <br />
+</p><p><b>Step 4: </b> Prepare SD card <br />
 To install the release image, you need a µSD Card (at least 4GB) with 2 partitions:
 </p>
 <ul><li> boot (vfat) partition.
@@ -5971,7 +5972,7 @@ To install the release image, you need a µSD Card (at least 4GB) with 2 partiti
 <pre>$ sudo ${GLSDK}/bin/mksdboot.sh --device <tt>/dev/sdY</tt> --sdk <tt>${GLSDK}</tt>
 </pre>
 <p>The above script would prepare the SD card with the prebuilt images and yocto filesystem for SD boot.
-</p><p><b>Step 6: </b>  Booting the board <br />
+</p><p><b>Step 5: </b>  Booting the board <br />
 To boot the board with the above created SD card, refer to the Quick Start Guide in <i>docs/</i> folder in the GLSDK release to set the board.<br />
 Then, power cycle the board and login with username as <b>root</b>.
 </p>
@@ -6022,7 +6023,7 @@ However, please make note of these important points.
 </li></ul>
 <pre><b>host $</b> cd [folder_name]
 </pre>
-<ul><li> Edit the glsdk-06.01.00-config.txt from the configs/glsdk to point to the latest commit-ids of the layers.Refer the default.xml file for this information.
+<ul><li> Edit the glsdk-06.01.00-config.txt from the configs/glsdk to point to the latest commit-ids of the layers. Refer the default.xml file for this information.
 </li><li> Run the script to clone all the layers. 
 </li></ul>
 <pre><b>host $</b> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-06.01.00-config.txt
@@ -6032,15 +6033,15 @@ However, please make note of these important points.
 <pre><b>host $</b> cd build
 <b>host $</b> . conf/setenv
 <b>host $</b> cp conf/local.conf conf/local.conf.pristine
-<b>host $</b> sed -i -e 's#^DL_DIR =.*#DL_DIR = "&lt;downloads_directory&gt;"#' conf/local.conf
+<b>host $</b> sed -i -e 's#^DL_DIR =.*#DL_DIR = "<i><b>path_to_downloads_directory</b></i>"#' conf/local.conf
 </pre>
 <ul><li> Start image build&nbsp;:
 </li></ul>
 <pre><b>host $</b> MACHINE=&lt;machine_name&gt; bitbake &lt;image&gt;
 </pre>
-<p>For example&nbsp;:
+<p>For example, to build the GLSDK console image for dra7xx-evm,
 </p>
-<pre><b>host $</b> MACHINE=dra7xx-evm bitbake arago-console-image
+<pre><b>host $</b> MACHINE=dra7xx-evm bitbake arago-glsdk-console-image
 </pre>
 <p>Once the build is complete the generated images could be found in &lt;folder_name&gt;/build/arago-tmp-external-linaro-toolchain/deploy/images/
 </p>
@@ -6143,9 +6144,9 @@ Flow control: none
 </p>
 <!-- 
 NewPP limit report
-Preprocessor node count: 85/1000000
-Post-expand include size: 13137/2097152 bytes
-Template argument size: 135/2097152 bytes
+Preprocessor node count: 86/1000000
+Post-expand include size: 13241/2097152 bytes
+Template argument size: 145/2097152 bytes
 Expensive parser function count: 0/100
 -->
 <div class="hf-footer"></div><div class="hf-nsfooter"><table style="text-align:center; background:white; width:100%; text-align:left; height: 65px border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-width: 1px; border-style: solid;">
@@ -6273,9 +6274,7 @@ Retrieved from "<a href="DRA7xx_GLSDK_Software_Developers_Guide.html">http://pro
 <div id="p-search">
 <!-- Google CSE Search Box Begins  -->
 <form action="http://processors.wiki.ti.com/index.php" id="searchbox_012993352299989377144:kjaa1vfng0a"><input type="hidden" name="title" value="GoogleSearch" /><input type="hidden" name="cx" value="012993352299989377144:kjaa1vfng0a" /><input type="hidden" name="cof" value="FORID:11" /><input type="text" name="q" size="25" /><input type="submit" name="sa" value="Search" /></form><script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_012993352299989377144%3Akjaa1vfng0a&lang=en"></script>
-<!-- Google CSE Search Box Ends --><!-- Google Search Result Snippet Begins -->
-<div id="results_012993352299989377144:kjaa1vfng0a"></div><script type="text/javascript">var googleSearchIframeName = "results_012993352299989377144:kjaa1vfng0a";var googleSearchFormName = "searchbox_012993352299989377144:kjaa1vfng0a";var googleSearchFrameWidth = 600;var googleSearchFrameborder = 0;var googleSearchDomain = "www.google.com";var googleSearchPath = "/cse";</script><script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
-<!-- Google Search Result Snippet Ends --></div>
+<!-- Google CSE Search Box Ends --></div>
 
 <!-- /2 -->
 			</div>
@@ -6307,7 +6306,13 @@ Retrieved from "<a href="DRA7xx_GLSDK_Software_Developers_Guide.html">http://pro
 			</div>
 </div>
 
-<!-- /navigatiohttp://processors.wiki.ti.com/images/tiexpres.png);" href="/index.php/Main_Page"  title="Visit the main page"></a></div>
+<!-- /navigation -->
+
+<!-- coll-print_export -->
+<div class="portal" id='p-coll-print_export'>
+	<h5>Print/export</h5>
+	<div class="body">
+				<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=DRA7xx+GLSDK+Software+Developers+Guide" title="Create a book or page collection" rel=nofollow>Create a book</a></li><li id="coll-download-as-rl"><a href="/index.php?title=Special:Book&amp;bookcmdhttp://processors.wiki.ti.com/images/tiexpres.png);" href="/index.php/Main_Page"  title="Visit the main page"></a></div>
 				<!-- /logo -->
 				
 <!-- navigation -->
@@ -6369,7 +6374,7 @@ Retrieved from "<a href="DRA7xx_GLSDK_Software_Developers_Guide.html">http://pro
 		<div id="footer">
 											<ul id="footer-info">
 																	<li id="footer-info-lastmod"> This page was last modified on 1 July 2013, at 17:12.</li>
-																							<li id="footer-info-viewcount">This page has been accessed 106 times.</li>
+																							<li id="footer-info-viewcount">This page has been accessed 200 times.</li>
 																							<li id="footer-info-copyright">Content is available under <a href="http://processors.wiki.ti.com/index.php/Texas_Instruments_Wiki:Copyrights" title="Texas Instruments Wiki:Copyrights">Creative Commons Attribution-Share Alike 3.0 license</a>.</li>
 															</ul>
 															<ul id="footer-places">
@@ -6448,5 +6453,5 @@ Retrieved from "<a href="DRA7xx_GLSDK_Software_Developers_Guide.html">http://pro
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-</script>		<!-- Served in 1.922 secs. -->			</body>
+</script>		<!-- Served in 1.963 secs. -->			</body>
 </html>
