@@ -80,7 +80,7 @@ sfgSaveAndContinueSummary="Saved using \"Save and continue\" button in form";
 <script>
 var wgLTEMessages = {"livetranslate-button-translate":"Translate","livetranslate-button-translating":"Translating...","livetranslate-dictionary-error":"Could not obtain the live translate dictionary. No words will be treated as special during the translation process.","livetranslate-button-revert":"Show original","livetranslate-translate-to":"Translate this page to"};
 </script>
-<script>var ltMsAppId = "Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=tiwiki&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&Audience=http%3a%2f%2fapi.microsofttranslator.com&ExpiresOn=1372699919&Issuer=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&HMACSHA256=dUMZjoRXFnNjgRjAGXg9SqF8UQ1iLV22JkKSKIiJA8c%3d";</script>
+<script>var ltMsAppId = "Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=tiwiki&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&Audience=http%3a%2f%2fapi.microsofttranslator.com&ExpiresOn=1372935579&Issuer=https%3a%2f%2fdatamarket.accesscontrol.windows.net%2f&HMACSHA256=6WKgj1F20fgLeMLnMN9mY%2bt5gb1rkhk8kf0oD5B0vzc%3d";</script>
 <script src="../skins/common/ajax.js%3F270"></script>
 <!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/ti/csshover.htc")}</style><![endif]-->
 <script src="../index.php%3Ftitle=-&amp;action=raw&amp;gen=js&amp;useskin=ti&amp;270"></script>
@@ -5948,9 +5948,10 @@ tiPageName = 'OMAP5_GLSDK_Software_Developers_Guide';
 The GLSDK comes with a script for setting up your Ubuntu 12.04 LTS development host. It is an interactive script, but if you accept the defaults by pressing return you will use the recommended settings. This is recommended for first time users. Note that this script requires ethernet access as it will update your Ubuntu Linux development host with the packages required to develop using the GLSDK.
 <br />
 <b>Note: Please make sure that the proxy settings are done for http, https, git, ftp and wget before proceeding further.</b> <br />
-Execute the script using:
+Execute the script in the GLSDK release directory using:
 </p>
-<pre><b>host $</b>  ${GLSDK}/setup.sh
+<pre><b>host $</b> cd ${GLSDK}
+<b>host $</b> ./setup.sh
 </pre>
 <p>The setup script would perform the following operations:
 </p>
@@ -5961,7 +5962,7 @@ Execute the script using:
 </li><li> Initialize the repo by pointing it to GLSDK release manifest location.
 </li></ol>
 <p>To start minicom on your Linux development host execute <i>minicom -w</i> (or Tera Term on Windows).
-</p><p><b>Step 5: </b> Prepare SD card <br />
+</p><p><b>Step 4: </b> Prepare SD card <br />
 To install the release image, you need a µSD Card (at least 4GB) with 2 partitions:
 </p>
 <ul><li> boot (vfat) partition.
@@ -5976,7 +5977,7 @@ To install the release image, you need a µSD Card (at least 4GB) with 2 partiti
 <pre>$ sudo ${GLSDK}/bin/mksdboot.sh --device <tt>/dev/sdY</tt> --sdk <tt>${GLSDK}</tt>
 </pre>
 <p>The above script would prepare the SD card with the prebuilt images and yocto filesystem for SD boot.
-</p><p><b>Step 6: </b>  Booting the board <br />
+</p><p><b>Step 5: </b>  Booting the board <br />
 To boot the board with the above created SD card, refer to the Quick Start Guide in <i>docs/</i> folder in the GLSDK release to set the board.<br />
 Then, power cycle the board and login with username as <b>root</b>.
 </p>
@@ -6027,7 +6028,7 @@ However, please make note of these important points.
 </li></ul>
 <pre><b>host $</b> cd [folder_name]
 </pre>
-<ul><li> Edit the glsdk-06.01.00-config.txt from the configs/glsdk to point to the latest commit-ids of the layers.Refer the default.xml file for this information.
+<ul><li> Edit the glsdk-06.01.00-config.txt from the configs/glsdk to point to the latest commit-ids of the layers. Refer the default.xml file for this information.
 </li><li> Run the script to clone all the layers. 
 </li></ul>
 <pre><b>host $</b> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-06.01.00-config.txt
@@ -6037,15 +6038,15 @@ However, please make note of these important points.
 <pre><b>host $</b> cd build
 <b>host $</b> . conf/setenv
 <b>host $</b> cp conf/local.conf conf/local.conf.pristine
-<b>host $</b> sed -i -e 's#^DL_DIR =.*#DL_DIR = "&lt;downloads_directory&gt;"#' conf/local.conf
+<b>host $</b> sed -i -e 's#^DL_DIR =.*#DL_DIR = "<i><b>path_to_downloads_directory</b></i>"#' conf/local.conf
 </pre>
 <ul><li> Start image build&nbsp;:
 </li></ul>
 <pre><b>host $</b> MACHINE=&lt;machine_name&gt; bitbake &lt;image&gt;
 </pre>
-<p>For example&nbsp;:
+<p>For example, to build the GLSDK console image for omap5-evm,
 </p>
-<pre><b>host $</b> MACHINE=omap5-evm bitbake arago-console-image
+<pre><b>host $</b> MACHINE=omap5-evm bitbake arago-glsdk-console-image
 </pre>
 <p>Once the build is complete the generated images could be found in &lt;folder_name&gt;/build/arago-tmp-external-linaro-toolchain/deploy/images/
 </p>
@@ -6133,15 +6134,15 @@ To execute the demos, the graphics driver must be initialised by running pvrsrvi
 </li></ul>
 <pre><b>host $</b> make omap5_earlyboot_defconfig
 </pre>
-<ul><li> In the defconfig, initramfs is enabled and default location is set to the "initramfs" folder name in the linux_kernel directory. As part of the release, initramfs compressed file would be available in the filesystem folder which mainly contains the busybox binaries.
+<ul><li> In the defconfig, initramfs is enabled and default location is set to the "initramfs" folder name in the linux_kernel directory. Download the initramfs compressed tar file from the <a href="http://software-dl.ti.com/dsps/dsps_public_sw/glsdk/latest/index_FDS.html" class="external text" rel=nofollow target=_blank>Release download link</a>. This folder mainly contains the busybox binaries and some initialization scripts.
 </li></ul>
-<p><i>Note:</i> Copy and uncompress the initamfs as sudo user
+<p><i>Note:</i> Copy and uncompress the initramfs as sudo user
 </p>
-<pre><b>host $</b> sudo cp $GLSDK/filesystem/initramfs.tar.gz $GLSDK/board-support/linux_3.8.13/
+<pre><b>host $</b> sudo cp OMAP5_initramfs.tar.gz $GLSDK/board-support/linux_3.8.13/
 </pre>
 <p>In the linux kernel source directory, run the following commands:
 </p>
-<pre><b>host $</b> tar -zxf initramfs.tar.gz
+<pre><b>host $</b> sudo tar -zxf OMAP5_initramfs.tar.gz
 </pre>
 <p>This would generate a folder named "initramfs" in the kernel source directory.
 </p>
@@ -6240,9 +6241,9 @@ Flow control: none
 </p>
 <!-- 
 NewPP limit report
-Preprocessor node count: 96/1000000
-Post-expand include size: 17201/2097152 bytes
-Template argument size: 131/2097152 bytes
+Preprocessor node count: 97/1000000
+Post-expand include size: 17433/2097152 bytes
+Template argument size: 140/2097152 bytes
 Expensive parser function count: 0/100
 -->
 <div class="hf-footer"></div><div class="hf-nsfooter"><table style="text-align:center; background:white; width:100%; text-align:left; height: 65px border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-width: 1px; border-style: solid;">
@@ -6370,9 +6371,7 @@ Retrieved from "<a href="OMAP5_GLSDK_Software_Developers_Guide.html">http://proc
 <div id="p-search">
 <!-- Google CSE Search Box Begins  -->
 <form action="http://processors.wiki.ti.com/index.php" id="searchbox_012993352299989377144:kjaa1vfng0a"><input type="hidden" name="title" value="GoogleSearch" /><input type="hidden" name="cx" value="012993352299989377144:kjaa1vfng0a" /><input type="hidden" name="cof" value="FORID:11" /><input type="text" name="q" size="25" /><input type="submit" name="sa" value="Search" /></form><script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_012993352299989377144%3Akjaa1vfng0a&lang=en"></script>
-<!-- Google CSE Search Box Ends --><!-- Google Search Result Snippet Begins -->
-<div id="results_012993352299989377144:kjaa1vfng0a"></div><script type="text/javascript">var googleSearchIframeName = "results_012993352299989377144:kjaa1vfng0a";var googleSearchFormName = "searchbox_012993352299989377144:kjaa1vfng0a";var googleSearchFrameWidth = 600;var googleSearchFrameborder = 0;var googleSearchDomain = "www.google.com";var googleSearchPath = "/cse";</script><script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
-<!-- Google Search Result Snippet Ends --></div>
+<!-- Google CSE Search Box Ends --></div>
 
 <!-- /2 -->
 			</div>
@@ -6391,7 +6390,10 @@ Retrieved from "<a href="OMAP5_GLSDK_Software_Developers_Guide.html">http://proc
 				<ul>
 					<li id="n-mainpage"><a href="/index.php/Main_Page" title="Visit the main page [z]" accesskey="z">Main Page</a></li>
 					<li id="n-All-pages"><a href="/index.php/Special:AllPages">All pages</a></li>
-					<li id="n-All-categories"><a href="/index.php/Special:Categories">All categories</a><http://processors.wiki.ti.com/images/tiexpres.png);" href="/index.php/Main_Page"  title="Visit the main page"></a></div>
+					<li id="n-All-categories"><a href="/index.php/Special:Categories">All categories</a></li>
+					<li id="n-Popular-pages"><a href="/index.php/Special:PopularPages">Popular pages</a></li>
+					<li id="n-Popular-authors"><a href="/index.php/Special:MostPopularAuthors">Popular authors</a></li>
+					<li id="n-Popular-categories"><a href="/index.php/Special:CategoryHits">Popular categohttp://processors.wiki.ti.com/images/tiexpres.png);" href="/index.php/Main_Page"  title="Visit the main page"></a></div>
 				<!-- /logo -->
 				
 <!-- navigation -->
@@ -6453,7 +6455,7 @@ Retrieved from "<a href="OMAP5_GLSDK_Software_Developers_Guide.html">http://proc
 		<div id="footer">
 											<ul id="footer-info">
 																	<li id="footer-info-lastmod"> This page was last modified on 1 July 2013, at 17:12.</li>
-																							<li id="footer-info-viewcount">This page has been accessed 200 times.</li>
+																							<li id="footer-info-viewcount">This page has been accessed 423 times.</li>
 																							<li id="footer-info-copyright">Content is available under <a href="http://processors.wiki.ti.com/index.php/Texas_Instruments_Wiki:Copyrights" title="Texas Instruments Wiki:Copyrights">Creative Commons Attribution-Share Alike 3.0 license</a>.</li>
 															</ul>
 															<ul id="footer-places">
@@ -6532,5 +6534,5 @@ Retrieved from "<a href="OMAP5_GLSDK_Software_Developers_Guide.html">http://proc
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-</script>		<!-- Served in 0.976 secs. -->			</body>
+</script>		<!-- Served in 3.488 secs. -->			</body>
 </html>
