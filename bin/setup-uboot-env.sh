@@ -7,7 +7,7 @@ echo
 echo "--------------------------------------------------------------------------------"
 echo "This step will set up the u-boot variables for booting the EVM."
 platform=`grep PLATFORM= $cwd/../Rules.make | cut -d= -f2`
-prompt="OMAP5430 EVM #"
+prompt="OMAP5432 EVM #"
 
 echo "Select Linux kernel location:"
 echo " 1: SD card"
