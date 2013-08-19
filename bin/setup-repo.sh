@@ -24,7 +24,7 @@ fetch_repo() {
     sleep 2
     echo "Proceeding with repo init -u git://git.ti.com/glsdk/release-manifest.git"
     echo " "
-    repo init -u git://git.ti.com/glsdk/release-manifest.git -m dra7xx-evm.xml
+    repo init -u git://git.ti.com/glsdk/release-manifest.git -m dra7xx-evm_6_02_00_01.xml
     check_status
     echo
 }
