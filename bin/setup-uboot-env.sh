@@ -42,14 +42,14 @@ if [ "$kernel" -eq "1" ]; then
     else
 	ipaddr=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | head -1`
         fspath=`cat $cwd/../.targetfs`
-	baseargs="elevator=noop console=ttyO2,115200n8  earlyprintk rw ip=dhcp omapfb.vram=0:8M,1:8M,2:8M"
+	baseargs="elevator=noop console=ttyO0,115200n8  earlyprintk rw ip=dhcp"
         fssdargs="nfsroot=$ipaddr:$fspath"
-        loaddtb="fatload mmc 0:1 0x825f0000 omap5-uevm.dtb"
+        loaddtb="fatload mmc 0:1 0x825f0000 dra7-evm.dtb"
 	loaduimage="fatload mmc 0:1 0x80300000 uImage"
         bootargs="setenv bootargs '$baseargs $fssdargs'"
         bootcmd="bootm 0x80300000 - 0x825f0000"
 	fdtargs="setenv fdt_high 0x84000000"
-        cfg="uimage-nfs-sd"
+        cfg="uimage-sd_fs-nfs"
 
     fi
 fi
