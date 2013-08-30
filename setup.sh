@@ -32,6 +32,16 @@ check_status
 $cwd/bin/setup-repo.sh
 check_status
 
+echo "Do you want ti download all the component sources? y/N"
+read -p "[ n ]" choice
+if [  ! -n "$choice" ]; then
+    choice="n"
+fi
+if [ $choice = "y" -o $choice = "Y" ]; then
+    $cwd/bin/download-component-sources.sh
+fi
+
+
 echo "Do you want to fetch all the sources y/N "
 read -p "[ n ]" choice
 if [  ! -n "$choice" ]; then
