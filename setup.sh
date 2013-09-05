@@ -50,6 +50,8 @@ fi
 if [ $choice = "y" -o $choice = "Y" ]; then
     $cwd/bin/fetch-sources.sh
 
+	cd yocto-layers
+	git am ../patches/0001-configs-glsdk-6.02.00-Update-commitids-for-staged-tr.patch
 fi
 
 echo
