@@ -1,7 +1,6 @@
 #!/bin/sh
 
 #Component Sources versions:
-IPC_VERSION="3_00_02_26"		# This will change later
 FRAMEWORK_COMP_VERSION="3_24_00_09"
 CODEC_ENGINE_VERSION="3_24_00_08"
 OSAL_VERSION="1_24_00_09"
@@ -9,7 +8,6 @@ XDAIS_VERSION="7_24_00_04"
 BIOS_VERSION="6_35_02_45"
 XDCTOOLS_VERSION="3_25_02_70"
 
-IPC_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/$IPC_VERSION/exports/ipc_$IPC_VERSION.zip"
 FRAMEWORK_COMP_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/fc/$FRAMEWORK_COMP_VERSION/exports/framework_components_$FRAMEWORK_COMP_VERSION.tar.gz"
 CODEC_ENGINE_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce/$CODEC_ENGINE_VERSION/exports/codec_engine_$CODEC_ENGINE_VERSION.tar.gz"
 OSAL_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/osal/$OSAL_VERSION/exports/osal_$OSAL_VERSION.tar.gz"
@@ -19,12 +17,6 @@ XDCTOOLS_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcont
 
 if [ ! -d "component-sources" ]; then
 	mkdir "component-sources"
-fi
-if [ ! -d "component-sources/ipc_$IPC_VERSION" ]; then
-	wget -nc $IPC_WGET_URL
-	echo "Extracting IPC..."
-	unzip ipc_$IPC_VERSION.zip -d component-sources > /dev/null
-	mv ipc*.zip component-sources/
 fi
 if [ ! -d "component-sources/framework_components_$FRAMEWORK_COMP_VERSION" ]; then
 	wget -nc $FRAMEWORK_COMP_WGET_URL
