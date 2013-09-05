@@ -45,6 +45,7 @@ fetch_cc() {
     fi
 
     echo "Updating cross compiler used by Makefile"
+    sed -i "s=^TOOLCHAIN_INSTALL_DIR.*$=TOOLCHAIN_INSTALL_DIR\=$1=g" $cwd/../Rules.make
     sed -i "s=^CROSS_COMPILE_PREFIX.*$=CROSS_COMPILE_PREFIX\=$1/$ccbinary/bin/arm-linux-gnueabihf-=g" $cwd/../Rules.make
 }
 
