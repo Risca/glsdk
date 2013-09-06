@@ -25,7 +25,7 @@ echo "on your host."
 read -p "Press return to continue" REPLY
 
 extract_fs() {
-    fstar=`ls -1 $cwd/../filesystem/arago*sdk*console*dra7*.tar.gz`
+    fstar=`ls -1 $cwd/../filesystem/arago*sdk*multimedia*dra7*.tar.gz`
     me=`whoami`
     sudo mkdir -p $1
     check_status
