@@ -132,7 +132,8 @@ ipumm:
 	sed -i -e "s#^TOOLCHAIN_INSTALL_DIR.*#TOOLCHAIN_INSTALL_DIR = ${TOOLCHAIN_INSTALL_DIR}#" ${IPC_INSTALL_DIR}/products.mak
 	sed -i -e "s#^PLATFORM.*#PLATFORM = ${PLATFORM_IPC}#" ${IPC_INSTALL_DIR}/products.mak
 	sed -i -e "s#^PREFIX ?=.*#PREFIX = /usr#" ${IPC_INSTALL_DIR}/products.mak
-	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) -f ipc-linux.mak config
+	sed -i -e "s#^ti.targets.arm.elf.M4 .*#ti.targets.arm.elf.M4 = ${TMS470CGTOOLPATH_INSTALL_DIR}#" ${IPC_INSTALL_DIR}/products.mak
+	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) -f ipc-bios.mak all
 	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS)
 	$(MAKE) -C $(IPUMM_INSTALL_DIR) $(IPUMM_BUILD_VARS) $(DEFAULT_IPUMM_CONFIG)
 	$(MAKE) -C $(IPUMM_INSTALL_DIR) $(IPUMM_BUILD_VARS)
