@@ -179,12 +179,12 @@ execute "cp $sdkdir/board-support/prebuilt-images/boot.scr.emmc /tmp/sdk/$$/boot
 
 execute "cp $sdkdir/bin/README.boot.scr /tmp/sdk/$$/boot/"
 
-if [ ! -f $sdkdir/filesystem/arago*sdk*console*dra7*.tar.gz ]
+if [ ! -f $sdkdir/filesystem/arago*sdk*multimedia*dra7*.tar.gz ]
 then
 	echo "ERROR: failed to find rootfs tar in $sdkdir/filesystem"
 else
 	echo "Extracting filesystem on ${device}2 ..."
-	root_fs=`ls -1 $sdkdir/filesystem/arago*sdk*console*dra7*.tar.gz`
+	root_fs=`ls -1 $sdkdir/filesystem/arago*sdk*multimedia*dra7*.tar.gz`
 	execute "tar zxf $root_fs -C /tmp/sdk/$$/rootfs"
 	execute "cp $sdkdir/bin/mk-eMMC-boot.sh /tmp/sdk/$$/rootfs/home/root/"
 fi
