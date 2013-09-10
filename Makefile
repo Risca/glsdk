@@ -17,12 +17,12 @@ components_ipu: ipumm
 #==============================================================================
 # Install components
 #==============================================================================
-components_install: linux_install
+components_install: linux_install ipumm_install
 
 #==============================================================================
 # Clean up the targets built by 'make all'.
 #==============================================================================
-components_clean: linux_clean
+components_clean: linux_clean ipumm_clean
 
 #==============================================================================
 # Build all Demos, Examples and Applications
