@@ -139,7 +139,7 @@ ipumm:
 
 ipumm_clean:
 	$(MAKE) -C $(IPUMM_INSTALL_DIR) $(IPUMM_BUILD_VARS) clean
-	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) clean
+	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) -f ipc-bios.mak clean
 
 ipumm_install:
 	install -d $(EXEC_DIR)/lib/firmware
