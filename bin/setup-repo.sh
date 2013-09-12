@@ -3,25 +3,22 @@
 cwd=`dirname $0`
 . $cwd/common.sh
 
-defaultdir="${HOME}/bin"
-
-repodst="$cwd/repo"
-
 fetch_repo() {
     echo
     echo "----------------------------------------------------------------------------------------------"
-    echo "The repo tool will be installed in $(pwd)/bin folder"
+    echo "The repo tool will be installed in $cwd folder"
     echo "----------------------------------------------------------------------------------------------"
     repoBinaryURL="https://dl-ssl.google.com/dl/googlesource/git-repo/repo"
     check_status
-    wget $repoBinaryURL -O $repodst
+    wget $repoBinaryURL -O $cwd/repo-temp
+    check_status
+    #This is to avoid skipping if repo did not download due to proxy issue
+    mv $cwd/repo-temp $cwd/repo
+    chmod a+x $cwd/repo
     check_status
     export PATH=$cwd:$PATH
     check_status
-    chmod a+x $repodst
-    check_status
     echo "Successfully extracted the repo tool to $cwd"
-    sleep 2
     echo "Proceeding with repo init -u git://git.ti.com/glsdk/release-manifest.git"
     echo " "
     repo init -u git://git.ti.com/glsdk/release-manifest.git -m omap5-uevm_6_02_00_02.xml
@@ -30,9 +27,9 @@ fetch_repo() {
 }
 
 
-if [ -f "$repodst" ]; then
+if [ -f "$cwd/repo" ]; then
     echo "--------------------------------------------------------------------------------"
-    echo "WARNING!! $repodst already exists"
+    echo "WARNING!! $cwd/repo already exists"
     echo "--------------------------------------------------------------------------------"
 else
     fetch_repo $cwd
