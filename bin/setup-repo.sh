@@ -21,7 +21,7 @@ fetch_repo() {
     echo "Successfully extracted the repo tool to $cwd"
     echo "Proceeding with repo init -u git://git.ti.com/glsdk/release-manifest.git"
     echo " "
-    repo init -u git://git.ti.com/glsdk/release-manifest.git -m omap5-uevm_6_02_00_02.xml
+    repo init -u git://git.ti.com/glsdk/release-manifest.git -m omap5-uevm_6_02_01_01.xml --no-repo-verify
     check_status
     echo
 }
