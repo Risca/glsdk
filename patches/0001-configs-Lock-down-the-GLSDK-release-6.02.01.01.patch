@@ -1,0 +1,31 @@
+From 2504b3e669bbdb5930ab6e8bfda1d4302ee2dc3d Mon Sep 17 00:00:00 2001
+From: Mrinmayee Hingolikar <mrinmayee@ti.com>
+Date: Mon, 7 Oct 2013 19:35:38 +0530
+Subject: [PATCH] configs: Lock down the GLSDK release 6.02.01.01
+
+Signed-off-by: Mrinmayee Hingolikar <mrinmayee@ti.com>
+---
+ configs/glsdk/glsdk-06.02.01.01-config.txt |   11 +++++++++++
+ 1 files changed, 11 insertions(+), 0 deletions(-)
+ create mode 100644 configs/glsdk/glsdk-06.02.01.01-config.txt
+
+diff --git a/configs/glsdk/glsdk-06.02.01.01-config.txt b/configs/glsdk/glsdk-06.02.01.01-config.txt
+new file mode 100644
+index 0000000..f6d7733
+--- /dev/null
++++ b/configs/glsdk/glsdk-06.02.01.01-config.txt
+@@ -0,0 +1,11 @@
++# This file takes repo entries in the format
++# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
++
++bitbake,git://git.openembedded.org/bitbake,master,1.17.0,layers=
++meta-arago,git://arago-project.org/git/projects/meta-arago-glsdk.git,danny,HEAD,layers=meta-arago-distro:meta-arago-extras
++meta-openembedded,git://git.openembedded.org/meta-openembedded,danny,f00028caf257e386c0f3ae46bd4b3ba53dd0729d,layers=toolchain-layer:meta-oe
++meta-ti,git://arago-project.org/git/projects/meta-ti-glsdk.git,danny,HEAD,layers=
++meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,danny,d0558fa4304592622423582f8b464e1c22cfe6f1,layers=
++oe-core,git://git.openembedded.org/openembedded-core,danny,0785489d558c34cacf5cb349949a15e27084efbf,layers=meta
++OECORELAYERCONF=./sample-files/bblayers.conf.sample
++OECORELOCALCONF=./sample-files/local-arago.conf.sample
+-- 
+1.7.0.4
+
