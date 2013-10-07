@@ -123,7 +123,7 @@ hwaddr=`ifconfig | grep 'HWaddr' | cut -d: -f2- | awk '{print $3}' | head -1`
 echo "mmc part" > boot.script.nfs
 echo "fatload mmc 0:1 0x825f0000 dra7-evm.dtb" >> boot.script.nfs
 echo "fatload mmc 0:1 0x80300000 uImage" >> boot.script.nfs
-echo "setenv bootargs 'root=/dev/nfs nfsroot=$ipaddr:$dst console=ttyO0,115200n8 earlyprintk rw ip=dhcp omapdrm.num_crtc=3 consoleblank=0'" >> boot.script.nfs
+echo "setenv bootargs 'root=/dev/nfs nfsroot=$ipaddr:$dst console=ttyO0,115200n8 earlyprintk rw ip=dhcp omapdrm.num_crtc=2 consoleblank=0'" >> boot.script.nfs
 echo "setenv fdt_high 0x84000000" >> boot.script.nfs
 echo "bootm 0x80300000 - 0x825f0000" >> boot.script.nfs
 mkimage -A arm -T script -C none -n "Boot Image" -d boot.script.nfs boot.scr.nfs
