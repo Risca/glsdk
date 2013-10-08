@@ -143,4 +143,4 @@ ipumm_clean:
 
 ipumm_install:
 	install -d $(EXEC_DIR)/lib/firmware
-	install  $(IPUMM_INSTALL_DIR)/ducati-m4-ipu.xem4 $(EXEC_DIR)/lib/firmware/dra7-ipu2-fw.xem4
+	install  $(IPUMM_INSTALL_DIR)/$(DUCATI_FW_GEN) $(EXEC_DIR)/lib/firmware/$(DUCATI_FW)
