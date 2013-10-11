@@ -32,7 +32,11 @@ check_status
 $cwd/bin/setup-repo.sh
 check_status
 
-echo "Do you want ti download all the component sources? y/N"
+echo "This step will download ducati build tools"
+echo "This is needed only if you need to rebuild ipumm firmware"
+echo "You can also download them later when needed"
+echo "Do you want to download all the ducati build tools? y/N"
+
 read -p "[ n ]" choice
 if [  ! -n "$choice" ]; then
     choice="n"
@@ -51,10 +55,10 @@ if [ $choice = "y" -o $choice = "Y" ]; then
     $cwd/bin/fetch-sources.sh
 
 	cd yocto-layers
-	git am ../patches/0001-configs-Lock-down-the-GLSDK-release-6.02.01.01.patch
+	git am ../patches/0001-configs-Lock-down-the-GLSDK-release-6.02.01.02.patch
 fi
 
 echo
-echo "TISDK setup completed!"
+echo "GLSDK setup completed!"
 echo "Please continue reading the Software Developer's Guide for more information on"
 echo "how to develop software on the EVM"
