@@ -55,7 +55,7 @@ if [ $choice = "y" -o $choice = "Y" ]; then
     $cwd/bin/fetch-sources.sh
 
     cd yocto-layers
-    git am ../patches/0001-configs-Lock-down-the-GLSDK-release-6.02.01.02.patch
+    git am ../patches/0001-configs-Lock-down-the-configs-for-06.02.01.02.patch
 fi
 
 echo
