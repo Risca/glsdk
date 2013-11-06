@@ -8,7 +8,7 @@ fetch_repo() {
     echo "----------------------------------------------------------------------------------------------"
     echo "The repo tool will be installed in $cwd folder"
     echo "----------------------------------------------------------------------------------------------"
-    repoBinaryURL="https://dl-ssl.google.com/dl/googlesource/git-repo/repo"
+    repoBinaryURL="http://commondatastorage.googleapis.com/git-repo-downloads/repo"
     check_status
     wget $repoBinaryURL -O $cwd/repo-temp
     check_status
