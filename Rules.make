@@ -6,15 +6,15 @@ DEFAULT_UBOOT_CONFIG=dra7xx_evm_config
 DEFAULT_DTB_NAME=dra7-evm.dtb
 DEFAULT_IPUMM_CONFIG=vayu_smp_config
 DEFAULT_DSPDCE_CONFIG=vayu_config
-BIOS_VERSION=6_35_02_45
-IPC_VERSION=3_10_00_08
-IPUMM_VERSION=3_00_03_02
+BIOS_VERSION=6_35_03_47
+IPC_VERSION=3_20_00_06
+IPUMM_VERSION=3_00_03_04
 DSPDCE_VERSION=1_00_00_01
 DUCATI_FW_GEN=dra7xx-m4-ipu2.xem4
 DUCATI_FW=dra7-ipu2-fw.xem4
 DSP_FW_GEN=dra7xx-c66x-dsp.xe66
 DSP_FW=dra7-dsp1-fw.xe66
-XDC_VERSION=xdctools_3_25_02_70
+XDC_VERSION=xdctools_3_25_04_88
 PLATFORM_IPC=dra7xx
 
 # Cross compiler used for building linux and u-boot
