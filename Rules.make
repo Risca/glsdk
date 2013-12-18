@@ -15,7 +15,7 @@ DUCATI_FW=dra7-ipu2-fw.xem4
 DSP_FW_GEN=dra7xx-c66x-dsp.xe66
 DSP_FW=dra7-dsp1-fw.xe66
 XDC_VERSION=xdctools_3_25_04_88
-PLATFORM_IPC=dra7xx
+PLATFORM_IPC=DRA7XX
 
 # Cross compiler used for building linux and u-boot
 CROSS_COMPILE_PREFIX=arm-linux-gnueabihf-
