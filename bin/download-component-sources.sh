@@ -1,12 +1,12 @@
 #!/bin/sh
 
 #Component Sources versions:
-FRAMEWORK_COMP_VERSION="3_24_00_09"
+FRAMEWORK_COMP_VERSION="3_24_02_15"
 CODEC_ENGINE_VERSION="3_24_00_08"
 OSAL_VERSION="1_24_00_09"
 XDAIS_VERSION="7_24_00_04"
-BIOS_VERSION="6_35_02_45"
-XDCTOOLS_VERSION="3_25_02_70"
+BIOS_VERSION="6_35_03_47"
+XDCTOOLS_VERSION="3_25_04_88"
 
 FRAMEWORK_COMP_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/fc/$FRAMEWORK_COMP_VERSION/exports/framework_components_$FRAMEWORK_COMP_VERSION.tar.gz"
 CODEC_ENGINE_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce/$CODEC_ENGINE_VERSION/exports/codec_engine_$CODEC_ENGINE_VERSION.tar.gz"

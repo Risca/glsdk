@@ -5,13 +5,13 @@ DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
 DEFAULT_UBOOT_CONFIG=omap5_uevm_config
 DEFAULT_DTB_NAME=omap5-uevm.dtb
 DEFAULT_IPUMM_CONFIG=omap5_smp_config
-BIOS_VERSION=6_35_02_45
-IPC_VERSION=3_10_00_08
-IPUMM_VERSION=3_00_03_02
+BIOS_VERSION=6_35_03_47
+IPC_VERSION=3_20_00_06
+IPUMM_VERSION=3_00_03_04
 DUCATI_FW_GEN=omap5-m4-ipu.xem4
 DUCATI_FW=ducati-m3-core0.xem3
-XDC_VERSION=xdctools_3_25_02_70
-PLATFORM_IPC=omap54xx_smp
+XDC_VERSION=xdctools_3_25_04_88
+PLATFORM_IPC=OMAP54XX
 
 # Cross compiler used for building linux and u-boot
 CROSS_COMPILE_PREFIX=arm-linux-gnueabihf-
