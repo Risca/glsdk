@@ -55,4 +55,17 @@ if [ ! -d "component-sources/xdctools_$XDCTOOLS_VERSION" ]; then
 	chmod +x xdctools_setuplinux_$XDCTOOLS_VERSION.bin
 	./xdctools_setuplinux_$XDCTOOLS_VERSION.bin --prefix ./component-sources/ --mode unattended
 	mv xdctools_setuplinux*.bin component-sources/
+
+        # Workaround for the issue with 32-bit installer of XDC tools version 3.25.04.88
+        MACHINE_TYPE=`uname -m`
+        if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+              echo "Detected 64-bit machine, nothing to be done"
+        else
+              echo "Detected 32-bit machine"
+              wget http://processors.wiki.ti.com/images/8/8c/Gmake.gz
+              gunzip Gmake.gz
+              chmod +x Gmake
+              mv Gmake component-sources/xdctools_3_25_04_88/gmake
+              echo "Replaced with the correct version of gmake"
+        fi
 fi
