@@ -53,6 +53,6 @@ if [ ! -d "component-sources/xdctools_$XDCTOOLS_VERSION" ]; then
 	wget -nc $XDCTOOLS_WGET_URL
 	echo "Installing XDC tools..."
 	chmod +x xdctools_setuplinux_$XDCTOOLS_VERSION.bin
-	./xdctools_setuplinux_$XDCTOOLS_VERSION.bin --prefix ./component-sources/ --mode silent
+	./xdctools_setuplinux_$XDCTOOLS_VERSION.bin --prefix ./component-sources/ --mode unattended
 	mv xdctools_setuplinux*.bin component-sources/
 fi
