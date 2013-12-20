@@ -21,8 +21,8 @@ cd yocto-layers
 echo ["GLSDK]>  git am ../patches/*.patch "
 git am ../patches/*.patch 
 
-echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-06.02.01.02-config.txt"
-./oe-layertool-setup.sh -f configs/glsdk/glsdk-06.02.01.02-config.txt
+echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-06.03.00.01-config.txt"
+./oe-layertool-setup.sh -f configs/glsdk/glsdk-06.03.00.01-config.txt
 
 echo "[GLSDK]>"
 echo "[GLSDK]> Completed Yocto setup. You can now build using Yocto"
