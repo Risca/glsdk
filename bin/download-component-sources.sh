@@ -57,8 +57,8 @@ if [ ! -d "component-sources/xdctools_$XDCTOOLS_VERSION" ]; then
 	mv xdctools_setuplinux*.bin component-sources/
 
         # Workaround for the issue with 32-bit installer of XDC tools version 3.25.04.88
-        MACHINE_TYPE=`uname -m`
-        if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+        MACHINE_TYPE=`uname -a | grep 'x86_64'`
+        if [ -n "$MACHINE_TYPE" ]; then
               echo "Detected 64-bit machine, nothing to be done"
         else
               echo "Detected 32-bit machine"
