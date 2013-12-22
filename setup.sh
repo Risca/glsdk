@@ -33,8 +33,23 @@ $cwd/bin/setup-repo.sh
 check_status
 
 echo "This step will download ducati build tools"
-echo "This is needed only if you need to rebuild ipumm firmware"
-echo "You can also download them later when needed"
+
+echo "The following components will be downloaded from the specified locations:"
+echo " "
+echo "Framework Components: "
+echo "          http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/fc"
+echo "Codec Engine:"
+echo "          http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce"
+echo "XDAIS:"
+echo "          http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/xdais"
+echo "SYSBIOS:"
+echo "          http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/bios/sysbios"
+echo "XDCTools:"
+echo "          http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/"
+
+echo "You must agree and abide to respective license terms in order to continue."
+echo "Please refer to individual manifest files for license information."
+
 echo "Do you want to download all the ducati build tools? y/N"
 
 read -p "[ n ]" choice
