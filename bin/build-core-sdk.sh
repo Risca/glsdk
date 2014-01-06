@@ -32,7 +32,7 @@ if [ ! -n "$dwn" ]; then
     dwn=$dwndefault
 fi
 
-sudo mkdir -p $dwn
+mkdir -p $dwn
 sed -i -e "s#^DL_DIR =.*#DL_DIR = \"${dwn}\"#" conf/local.conf
 
 echo "[GLSDK]> MACHINE=$1 bitbake arago-glsdk-multimedia-image"
