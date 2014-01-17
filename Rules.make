@@ -49,6 +49,9 @@ BIOSTOOLSROOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources
 # The directory that points to your bios source directory.
 BIOS_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/bios_$(BIOS_VERSION)
 
+# The directory that points to your bios source directory.
+XDC_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/$(XDC_VERSION)
+
 # The directory that points to your ipc source directory.
 IPC_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/ipc_$(IPC_VERSION)
 

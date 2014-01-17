@@ -10,7 +10,7 @@ all: components apps
 #==============================================================================
 # Build components to enable all other build targets.
 #==============================================================================
-components: components_linux ipc components_ipu components_dsp
+components: components_linux components_ipu components_dsp
 components_linux: linux
 components_ipu: ipumm
 components_dsp: dspdce
@@ -70,7 +70,8 @@ help:
 	@echo "    linux_clean                    : Remove generated Linux kernel files"
 	@echo "    linux_install                  : Install kernel binary and  modules"
 	@echo
-	@echo "    ipc                            : Build ipc"
+	@echo "    ipc_ipu                        : Build ipc for IPU"
+	@echo "    ipc_dsp                        : Build ipc for DSP"
 	@echo "    ipc_clean                      : Remove generated ipc files"
 	@echo
 	@echo "    u-boot                         : Build the u-boot boot loader"
@@ -134,17 +135,17 @@ u-boot_install:
 	install $(UBOOT_INSTALL_DIR)/u-boot.map $(EXEC_DIR)/boot
 
 #==============================================================================
-# Build ipc. Also, an explicit cleanup target is defined.
+# Build ipc for ipu. Also, an explicit cleanup target is defined.
 #==============================================================================
-ipc:
-	sed -i -e "s#^TOOLCHAIN_LONGNAME.*#TOOLCHAIN_LONGNAME = arm-linux-gnueabihf#" ${IPC_INSTALL_DIR}/products.mak
-	sed -i -e "s#^KERNEL_INSTALL_DIR.*#KERNEL_INSTALL_DIR = $(LINUXKERNEL_INSTALL_DIR)#" $(IPC_INSTALL_DIR)/products.mak
-	sed -i -e "s#^TOOLCHAIN_INSTALL_DIR.*#TOOLCHAIN_INSTALL_DIR = ${TOOLCHAIN_INSTALL_DIR}#" ${IPC_INSTALL_DIR}/products.mak
-	sed -i -e "s#^PLATFORM.*#PLATFORM = ${PLATFORM_IPC}#" ${IPC_INSTALL_DIR}/products.mak
-	sed -i -e "s#^PREFIX ?=.*#PREFIX = /usr#" ${IPC_INSTALL_DIR}/products.mak
-	sed -i -e "s#^ti.targets.arm.elf.M4 .*#ti.targets.arm.elf.M4 = ${TMS470CGTOOLPATH_INSTALL_DIR}#" ${IPC_INSTALL_DIR}/products.mak
-	sed -i -e "s#^ti.targets.elf.C66 .*#ti.targets.elf.C66 = ${CODEGEN_INSTALL_DIR}#" ${IPC_INSTALL_DIR}/products.mak
-	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) -f ipc-bios.mak all
+ipc_ipu:
+	$(MAKE) -C $(IPC_INSTALL_DIR) PLATFORM=${PLATFORM_IPC} ti.targets.arm.elf.M4=${TMS470CGTOOLPATH_INSTALL_DIR} XDC_INSTALL_DIR=${XDC_INSTALL_DIR} BIOS_INSTALL_DIR=${BIOS_INSTALL_DIR} -f ipc-bios.mak all
+
+#==============================================================================
+# Build ipc for dsp. Also, an explicit cleanup target is defined.
+#==============================================================================
+ipc_dsp:
+	$(MAKE) -C $(IPC_INSTALL_DIR) PLATFORM=${PLATFORM_IPC} ti.targets.elf.C66=${CODEGEN_INSTALL_DIR} XDC_INSTALL_DIR=${XDC_INSTALL_DIR} BIOS_INSTALL_DIR=${BIOS_INSTALL_DIR} -f ipc-bios.mak all
+
 
 ipc_clean:
 	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) -f ipc-bios.mak clean
@@ -153,7 +154,7 @@ ipc_clean:
 #==============================================================================
 # Build ipumm. Also, an explicit cleanup target is defined.
 #==============================================================================
-ipumm:ipc
+ipumm:ipc_ipu
 	$(MAKE) -C $(IPUMM_INSTALL_DIR) $(IPUMM_BUILD_VARS) $(DEFAULT_IPUMM_CONFIG)
 	$(MAKE) -C $(IPUMM_INSTALL_DIR) $(IPUMM_BUILD_VARS)
 
@@ -167,7 +168,7 @@ ipumm_install:
 #==============================================================================
 # Build dspdce. Also, an explicit cleanup target is defined.
 #==============================================================================
-dspdce:ipc
+dspdce:ipc_dsp
 	$(MAKE) -C $(DSPDCE_INSTALL_DIR) $(DSPDCE_BUILD_VARS) $(DEFAULT_DSPDCE_CONFIG)
 	$(MAKE) -C $(DSPDCE_INSTALL_DIR) $(DSPDCE_BUILD_VARS)
 
