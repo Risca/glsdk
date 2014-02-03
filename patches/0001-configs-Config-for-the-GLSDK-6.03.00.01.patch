@@ -1,17 +1,17 @@
-From 2facb0b0938c2bb2e066fda4a94e69ba13479050 Mon Sep 17 00:00:00 2001
-From: Mrinmayee Hingolikar <mrinmayee@ti.com>
-Date: Thu, 19 Dec 2013 18:08:31 +0530
+From c37d0f10cc370af2d9c8fbbac4de5e9035ade2e0 Mon Sep 17 00:00:00 2001
+From: Vivek Bardia <x0161644@ti.com>
+Date: Mon, 3 Feb 2014 15:42:26 +0530
 Subject: [PATCH] configs: Config for the GLSDK 6.03.00.01
 
-Signed-off-by: Mrinmayee Hingolikar <mrinmayee@ti.com>
+Signed-off-by: Vivek Bardia <x0161644@ti.com>
 ---
  configs/glsdk/glsdk-06.03.00.01-config.txt |   12 ++++++++++++
- 1 files changed, 12 insertions(+), 0 deletions(-)
+ 1 file changed, 12 insertions(+)
  create mode 100644 configs/glsdk/glsdk-06.03.00.01-config.txt
 
 diff --git a/configs/glsdk/glsdk-06.03.00.01-config.txt b/configs/glsdk/glsdk-06.03.00.01-config.txt
 new file mode 100644
-index 0000000..7c46c3b
+index 0000000..551a2e6
 --- /dev/null
 +++ b/configs/glsdk/glsdk-06.03.00.01-config.txt
 @@ -0,0 +1,12 @@
@@ -19,14 +19,14 @@ index 0000000..7c46c3b
 +# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 +
 +bitbake,git://git.openembedded.org/bitbake,master,bbb4fa427739912ff3b87379bf629066f6662458,layers=
-+meta-arago,git://arago-project.org/git/projects/meta-arago-glsdk.git,master,HEAD,layers=meta-arago-distro:meta-arago-extras
-+meta-qt5,git://github.com/meta-qt5/meta-qt5.git,master,HEAD,layers=
-+meta-openembedded,git://git.openembedded.org/meta-openembedded,dylan,HEAD,layers=toolchain-layer:meta-networking:meta-ruby:meta-oe
-+meta-ti,git://arago-project.org/git/projects/meta-ti-glsdk.git,dylan,HEAD,layers=
-+meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,dylan,HEAD,layers=meta-linaro-toolchain
-+oe-core,git://git.openembedded.org/openembedded-core,dylan,HEAD,layers=meta
++meta-arago,git://arago-project.org/git/projects/meta-arago-glsdk.git,master,b838c23aae724496b3aee48b5daa0f458e0526c1,layers=meta-arago-distro:meta-arago-extras
++meta-qt5,git://github.com/meta-qt5/meta-qt5.git,master,775d77e482f1ea203c78003cccd2547075fd720f,layers=
++meta-openembedded,git://git.openembedded.org/meta-openembedded,dylan,44754206632dd5b0725aeb43e99e4ff9e0245dca,layers=toolchain-layer:meta-networking:meta-ruby:meta-oe
++meta-ti,git://arago-project.org/git/projects/meta-ti-glsdk.git,dylan,691ad445d8d55971ac787a60516aaf91bc4bc3a3,layers=
++meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,dylan,c9f78d6eff14ada3f2bc960e81883b27a10afecc,layers=meta-linaro-toolchain
++oe-core,git://git.openembedded.org/openembedded-core,dylan,394fa61d00b97c19610bfb38f02174c4e8aeeb15,layers=meta
 +OECORELAYERCONF=./sample-files/bblayers.conf.sample
 +OECORELOCALCONF=./sample-files/local-arago.conf.sample
 -- 
-1.7.0.4
+1.7.9.5
 
