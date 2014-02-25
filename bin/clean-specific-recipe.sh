@@ -16,7 +16,7 @@ echo "[GLSDK]> . conf/setenv"
 export MACHINE=$1
 shift
 echo "[GLSDK]> MACHINE=$MACHINE bitbake $@ -c cleanall"
-bitbake $@ -c clean
+bitbake $@ -c cleanall
 
 echo "[GLSDK]>"
 echo "[GLSDK]> Completed Yocto build at `date`"
