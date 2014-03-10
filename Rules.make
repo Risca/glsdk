@@ -5,12 +5,12 @@ DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
 DEFAULT_UBOOT_CONFIG=omap5_uevm_config
 DEFAULT_DTB_NAME=omap5-uevm.dtb
 DEFAULT_IPUMM_CONFIG=omap5_smp_config
-BIOS_VERSION=6_35_03_47
-IPC_VERSION=3_20_00_06
-IPUMM_VERSION=3_00_03_04
+BIOS_VERSION=6_37_02_27
+IPC_VERSION=3_21_00_07
+IPUMM_VERSION=3_00_04_00
 DUCATI_FW_GEN=omap5-m4-ipu.xem4
 DUCATI_FW=ducati-m3-core0.xem3
-XDC_VERSION=xdctools_3_25_04_88
+XDC_VERSION=xdctools_3_25_05_94
 PLATFORM_IPC=OMAP54XX
 
 # Cross compiler used for building linux and u-boot
@@ -34,7 +34,7 @@ SGX_KERNEL_MODULE_PATH=$(GLSDK_INSTALL_DIR)/board-support/external-linux-kernel-
 UBOOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/u-boot
 
 # The directory that points to your u-boot source directory.
-TMS470CGTOOLPATH_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/cgt470_5_0_1
+TMS470CGTOOLPATH_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/cgt470_5_0_7
 
 # The directory that points to the bios tools directory.
 BIOSTOOLSROOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources
