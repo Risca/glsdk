@@ -26,6 +26,9 @@ read -p "[ $ccdefault ] " dst
 if [ ! -n "$dst" ]; then
     dst=$ccdefault
 fi
+
+mkdir -p $dst
+
 echo "--------------------------------------------------------------------------------"
 
 fetch_cc() {
@@ -33,7 +36,7 @@ fetch_cc() {
     check_status
     wget --no-check-certificate $ccBinaryURL
     check_status
-    tar -jxvf "$ccbinary.tar.bz2" -C $1
+    tar -jxf "$ccbinary.tar.bz2" -C $1
     check_status
     echo
     echo "Successfully extracted the cross compiler to $1"
