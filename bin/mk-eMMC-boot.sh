@@ -9,7 +9,7 @@
 #
 
 VERSION="0.1"
-mmc_dev="/dev/mmcblk0"
+mmc_dev="/dev/mmcblk1"
 
 execute ()
 {
