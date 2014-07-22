@@ -9,16 +9,20 @@
 # Licensed under terms of GPLv2
 #
 
-VERSION="0.1"
-qspi_dev="/dev/mtd0"
-emmc_dev="/dev/mmcblk1"
-main_dev="/dev/mmcblk0"
+VERSION="0.2"
+qspi_spl_dev="/dev/mtd0"
+qspi_uboot_dev="/dev/mtd4"
+qspi_dtb_dev="/dev/mtd5"
+qspi_kernel_dev="/dev/mtd8"
+qspi_ipu_dev="/dev/mtd9"
+emmc_dev="/dev/mmcblk0"
+main_dev="/dev/mmcblk1"
 
 MLO_IMAGE_OFFSET=0x000000
-UBOOT_IMAGE_OFFSET=0x020000
-DTB_OFFSET=0x090000
-UIMAGE_OFFSET=0x100000
-IPU_IMAGE_OFFSET=0x700000
+UBOOT_IMAGE_OFFSET=0x040000
+DTB_OFFSET=0x0140000
+UIMAGE_OFFSET=0x170000
+IPU_IMAGE_OFFSET=0x970000
 
 execute ()
 {
@@ -53,7 +57,7 @@ Mandatory options:
 			e.g /dev/mtd0
 
 --device2 - devfs entry for eMMC flash as block device node
-			e.g /dev/mmcblk1
+			e.g /dev/mmcblk0
 
 --bootmode -'spl_early_boot' & 'two_stage_boot'
 			 spl_early_boot - ROM=>SPL=>uImage
@@ -139,7 +143,7 @@ done
 umount /tmp/sdk/$$/mmc_boot 2>/dev/null
 umount /tmp/sdk/$$/mmc_rootfs 2>/dev/null
 
-main_dev=/dev/mmcblk0
+main_dev=/dev/mmcblk1
 
 # Flash the MLO, uImage & other binaries in QSPI
 # Flash MLO @ 0x00000
@@ -175,20 +179,30 @@ fi
 # QSPI Flash chip erase
 if [ "spl_early_boot" == "$boot_mode" ];then
 	echo "Started qspi flash chip erase"
-	execute "flash_erase -N /dev/mtd0 0 512"
+	execute "flash_erase -N $qspi_spl_dev 0 1"
+	execute "flash_erase -N /dev/mtd1 0 1"
+	execute "flash_erase -N /dev/mtd2 0 1"
+	execute "flash_erase -N /dev/mtd3 0 1"
+	execute "flash_erase -N $qspi_uboot_dev 0 16"
+	execute "flash_erase -N $qspi_dtb_dev 0 1"
+	execute "flash_erase -N /dev/mtd6 0 1"
+	execute "flash_erase -N /dev/mtd7 0 1"
+	execute "flash_erase -N $qspi_kernel_dev 0 128"
+	execute "flash_erase -N $qspi_ipu_dev 0 361"
 	echo "Erase completed"
 else
 	echo "Started qspi flash block erase"
-	execute "flash_erase -N /dev/mtd0 0 9"
+	execute "flash_erase -N $qspi_spl_dev 0 1"
+	execute "flash_erase -N $qspi_uboot_dev 0 16"
 	echo "Erase completed"
 fi
 
 echo "Flashing MLO image @ $MLO_IMAGE_OFFSET"
-execute "mtd_debug write /dev/mtd0 $MLO_IMAGE_OFFSET $(ls -l $MLO_FILE_PATH | awk '{ print $5 }') $MLO_FILE_PATH"
+execute "mtd_debug write $qspi_spl_dev 0x0 $(ls -l $MLO_FILE_PATH | awk '{ print $5 }') $MLO_FILE_PATH"
 echo "MLO flashing completed"
 
 echo "Flashing u-boot.img image @ $UBOOT_IMAGE_OFFSET"
-execute "mtd_debug write /dev/mtd0 $UBOOT_IMAGE_OFFSET $(ls -l $UBOOT_FILE_PATH | awk '{ print $5 }') $UBOOT_FILE_PATH"
+execute "mtd_debug write $qspi_uboot_dev 0x0 $(ls -l $UBOOT_FILE_PATH | awk '{ print $5 }') $UBOOT_FILE_PATH"
 echo "u-boot.img flashing completed"
 
 if [ "two_stage_boot" == "$boot_mode" ];then
@@ -200,15 +214,15 @@ if [ "two_stage_boot" == "$boot_mode" ];then
 fi
 
 echo "Flashing DRA7xx DTB file @ $DTB_OFFSET"
-execute "mtd_debug write /dev/mtd0 $DTB_OFFSET $(ls -l $DTB_FILE_PATH | awk '{ print $5 }') $DTB_FILE_PATH"
+execute "mtd_debug write $qspi_dtb_dev 0x0 $(ls -l $DTB_FILE_PATH | awk '{ print $5 }') $DTB_FILE_PATH"
 echo "DRA7xx DTB file flashing completed"
 
 echo "Flashing uImage @ $UIMAGE_OFFSET"
-execute "mtd_debug write /dev/mtd0 $UIMAGE_OFFSET $(ls -l $UIMAGE_FILE_PATH | awk '{    print $5 }') $UIMAGE_FILE_PATH"
+execute "mtd_debug write $qspi_kernel_dev 0x0 $(ls -l $UIMAGE_FILE_PATH | awk '{    print $5 }') $UIMAGE_FILE_PATH"
 echo "uImage flashimg completed"
 
 echo "Flashing IPU image @ $IPU_IMAGE_OFFSET"
-execute "mtd_debug write /dev/mtd0 $IPU_IMAGE_OFFSET $(ls -l $IPU_FILE_PATH | awk '{ print $5 }') $IPU_FILE_PATH"
+execute "mtd_debug write $qspi_ipu_dev 0x0 $(ls -l $IPU_FILE_PATH | awk '{ print $5 }') $IPU_FILE_PATH"
 echo "IPU image flashing completed"
 
 execute "dd if=/dev/zero of=$emmc_dev bs=1024 count=1024"
