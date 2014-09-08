@@ -18,8 +18,8 @@ XDC_VERSION=xdctools_3_25_06_96
 PLATFORM_IPC=DRA7XX
 
 # Cross compiler used for building linux and u-boot
-CROSS_COMPILE_PREFIX=arm-linux-gnueabihf-
 TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux
+CROSS_COMPILE_PREFIX=$(TOOLCHAIN_INSTALL_DIR)/bin/arm-linux-gnueabihf-
 
 # The installation directory of the SDK.
 GLSDK_INSTALL_DIR=$(shell pwd)
