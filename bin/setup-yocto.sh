@@ -20,8 +20,8 @@ cp bin/build-core-sdk.sh yocto-layers
 echo "[GLSDK]> cd yocto-layers"
 cd yocto-layers
 
-echo ["GLSDK]>  git am ../patches/*.patch "
-git am ../patches/*.patch 
+echo ["GLSDK]>  cp ../config/*.* configs/glsdk/. "
+cp ../config/*.* configs/glsdk/.
 
 echo "[GLSDK]>"
 echo "[GLSDK]> Completed Yocto setup. You can now build using Yocto"
