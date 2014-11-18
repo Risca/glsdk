@@ -99,11 +99,11 @@ help:
 # Build the Linux kernel. Also, an explicit cleanup target is defined.
 #==============================================================================
 linux:
-	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) $(DEFAULT_LINUXKERNEL_CONFIG)
-	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) uImage
-	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) modules
+	cd board-support/linux/; pwd ; ./scripts/kconfig/merge_config.sh -m arch/arm/configs/omap2plus_defconfig ti_config_fragments/ipc.cfg ti_config_fragments/power.cfg ti_config_fragments/audio_display.cfg ti_config_fragments/system_test.cfg ti_config_fragments/baseport.cfg ti_config_fragments/wlan.cfg ti_config_fragments/connectivity.cfg
+	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) olddefconfig ARCH=arm
+	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) zImage
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) $(DEFAULT_DTB_NAME)
-	$(MAKE) -C $(SGX_KERNEL_MODULE_PATH) $(LINUXKERNEL_BUILD_VARS) KERNELDIR=$(LINUXKERNEL_INSTALL_DIR) DISCIMAGE=$(EXEC_DIR)
+	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) modules
 
 linux_clean:
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) mrproper
@@ -111,12 +111,11 @@ linux_clean:
 
 linux_install:
 	install -d $(EXEC_DIR)/boot
-	install  $(LINUXKERNEL_INSTALL_DIR)/arch/arm/boot/uImage $(EXEC_DIR)/boot
+	install  $(LINUXKERNEL_INSTALL_DIR)/arch/arm/boot/zImage $(EXEC_DIR)/boot
 	install  $(LINUXKERNEL_INSTALL_DIR)/arch/arm/boot/dts/$(DEFAULT_DTB_NAME) $(EXEC_DIR)/boot
 	install  $(LINUXKERNEL_INSTALL_DIR)/vmlinux $(EXEC_DIR)/boot
 	install  $(LINUXKERNEL_INSTALL_DIR)/System.map $(EXEC_DIR)/boot
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) INSTALL_MOD_PATH=$(EXEC_DIR)/ modules_install
-	$(MAKE) -C $(SGX_KERNEL_MODULE_PATH) $(LINUXKERNEL_BUILD_VARS) KERNELDIR=$(LINUXKERNEL_INSTALL_DIR) DISCIMAGE=$(EXEC_DIR) kbuild_install
 
 #==============================================================================
 # Build u-boot. Also, an explicit cleanup target is defined.
