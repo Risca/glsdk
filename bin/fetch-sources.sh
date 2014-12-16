@@ -10,7 +10,7 @@ repodst="$repoPath/repo"
 
 if [ -f "$repodst" ]; then
     export PATH=$repoPath:$PATH;
-    repo sync
+    repo sync -j $(nproc)
     repo forall -c "git checkout -b glsdk_dev" 2> /dev/null
     repo forall -c "git checkout glsdk_dev" 
 
