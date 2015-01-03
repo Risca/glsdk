@@ -145,6 +145,14 @@ ipc_ipu:
 ipc_dsp:
 	$(MAKE) -C $(IPC_INSTALL_DIR) PLATFORM=${PLATFORM_IPC} ti.targets.elf.C66=${CODEGEN_INSTALL_DIR} XDC_INSTALL_DIR=${XDC_INSTALL_DIR} BIOS_INSTALL_DIR=${BIOS_INSTALL_DIR} -f ipc-bios.mak all
 
+ipc_mpu: linux_utils
+	$(MAKE) -e -C $(IPC_INSTALL_DIR) PLATFORM=${PLATFORM_IPC} \
+		CMEM_INSTALL_DIR=${LINUXUTILS_INSTALL_DIR} \
+		TOOLCHAIN_LONGNAME=arm-linux-gnueabihf \
+		TOOLCHAIN_PREFIX=${CROSS_COMPILE_PREFIX} \
+		KERNEL_INSTALL_DIR=${KERNEL_INSTALL_DIR} \
+		-f ipc-linux.mak config
+	$(MAKE) -C $(IPC_INSTALL_DIR)
 
 ipc_clean:
 	$(MAKE) -C $(IPC_INSTALL_DIR) $(IPC_BUILD_VARS) -f ipc-bios.mak clean
