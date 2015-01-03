@@ -16,6 +16,7 @@ DSP_FW_GEN=dra7xx-c66x-dsp.xe66
 DSP_FW=dra7-dsp1-fw.xe66
 XDC_VERSION=xdctools_3_30_05_60
 PLATFORM_IPC=DRA7XX
+LINUXUTILS_VERSION=4_00_02_11
 
 # Cross compiler used for building linux and u-boot
 TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux
@@ -61,6 +62,9 @@ IPUMM_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/ipumm_$(IPUMM_VERSION)
 # The directory that points to your dsp source directory.
 DSPDCE_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/dspdce_$(DSPDCE_VERSION)
 
+# Directory where linux utils is installed
+LINUXUTILS_INSTALL_DIR=${DVSDK_INSTALL_DIR}/component-sources/linuxutils_${LINUXUTILS_VERSION}
+
 # Kernel/U-Boot build variables
 LINUXKERNEL_BUILD_VARS = ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE_PREFIX)
 UBOOT_BUILD_VARS = CROSS_COMPILE=$(CROSS_COMPILE_PREFIX)
@@ -94,3 +98,10 @@ DSPDCE_BUILD_VARS = BIOSTOOLSROOT=$(BIOSTOOLSROOT_INSTALL_DIR) \
     PLATFORM=$(REVISION)
 # Where to copy the resulting executables
 EXEC_DIR=$(HOME)/install/$(PLATFORM)
+
+# CMEM build variables
+# Arguments for building the kernel module
+CMEM_KO_BUILD_VARS = ARCH=arm TOOLCHAIN_PREFIX=$(CROSS_COMPILE_PREFIX) \
+					 KERNEL_INSTALL_DIR=${KERNEL_INSTALL_DIR}
+CMEM_CONFIG_VARS = ARCH=arm TOOLCHAIN_PREFIX=$(CROSS_COMPILE_PREFIX) \
+	CC=$(CROSS_COMPILE_PREFIX)gcc --host=arm-linux-gnueabihf

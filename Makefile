@@ -177,3 +177,14 @@ dspdce_clean:
 dspdce_install:
 	install -d $(EXEC_DIR)/lib/firmware
 	install  $(DSPDCE_INSTALL_DIR)/$(DSP_FW_GEN) $(EXEC_DIR)/lib/firmware/$(DSP_FW)
+
+#==============================================================================
+# Build Linux Utils. This is required for using CMEM allocator in user space
+#==============================================================================
+linux_utils:
+	cd $(LINUXUTILS_INSTALL_DIR);./configure --prefix=${LINUXUTILS_INSTALL_DIR}/out \
+	   $(CMEM_CONFIG_VARS)
+	make -C $(LINUXUTILS_INSTALL_DIR)
+	make -C $(LINUXUTILS_INSTALL_DIR) install
+	make -e -C $(LINUXUTILS_INSTALL_DIR)/src/cmem/module \
+	   $(CMEM_KO_BUILD_VARS)
