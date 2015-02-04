@@ -137,7 +137,7 @@ u-boot_install:
 # Build ipc for ipu. Also, an explicit cleanup target is defined.
 #==============================================================================
 ipc_ipu:
-	$(MAKE) -C $(IPC_INSTALL_DIR) PLATFORM=${PLATFORM_IPC} ti.targets.arm.elf.M4=${TMS470CGTOOLPATH_INSTALL_DIR} XDC_INSTALL_DIR=${XDC_INSTALL_DIR} BIOS_INSTALL_DIR=${BIOS_INSTALL_DIR} -f ipc-bios.mak all
+	$(MAKE) -C $(IPC_INSTALL_DIR) PLATFORM=${PLATFORM_IPC} ti.targets.arm.elf.M4=${TMS470CGTOOLPATH_INSTALL_DIR} XDC_INSTALL_DIR=${XDC_INSTALL_DIR} BIOS_INSTALL_DIR=${BIOS_INSTALL_DIR} -ef ipc-bios.mak all
 
 #==============================================================================
 # Build ipc for dsp. Also, an explicit cleanup target is defined.
