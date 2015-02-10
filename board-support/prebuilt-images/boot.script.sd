@@ -1,6 +1,0 @@
-mmc part
-fatload mmc 0:1 0x825f0000 dra7-evm.dtb
-fatload mmc 0:1 0x80300000 uImage
-setenv bootargs 'elevator=noop console=ttyO0,115200n8 root=/dev/mmcblk1p2 rw rootwait earlyprintk fixrtc omapdrm.num_crtc=2 consoleblank=0 cma=64M'
-setenv fdt_high 0x84000000
-bootm 0x80300000 - 0x825f0000

@@ -172,7 +172,7 @@ mkimage -A arm -T script -C none -n "Boot Image" -d "$sdkdir/board-support/prebu
 
 execute "cp $sdkdir/board-support/prebuilt-images/MLO /tmp/sdk/$$/boot/"
 execute "cp $sdkdir/board-support/prebuilt-images/u-boot.img /tmp/sdk/$$/boot/"
-execute "cp $sdkdir/board-support/prebuilt-images/uenv.txt /tmp/sdk/$$/boot/"
+execute "cp $sdkdir/board-support/prebuilt-images/uenv*.txt /tmp/sdk/$$/boot/"
 
 execute "cp $sdkdir/bin/README.boot.scr /tmp/sdk/$$/boot/"
 

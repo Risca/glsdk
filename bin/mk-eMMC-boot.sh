@@ -178,8 +178,7 @@ execute "mount ${device}p2 /tmp/sdk/$$/emmc_rootfs"
 
 echo "Copying boot image from ${mmc_dev}p1 to ${device}p1"
 execute "cp /tmp/sdk/$$/mmc_boot/* /tmp/sdk/$$/emmc_boot/."
-execute "rm /tmp/sdk/$$/emmc_boot/boot.scr"
-execute "mv /tmp/sdk/$$/emmc_boot/boot.scr.eMMC /tmp/sdk/$$/emmc_boot/boot.scr"
+execute "cp /tmp/sdk/$$/mmc_boot/uenv-emmc.txt /tmp/sdk/$$/emmc_boot/uenv.txt"
 
 echo "Copying filesystem from ${mmc_dev}p2 to ${device}p2"
 execute "cp -rvf /tmp/sdk/$$/mmc_rootfs/* /tmp/sdk/$$/emmc_rootfs/."
