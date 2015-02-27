@@ -176,6 +176,7 @@ else
 	root_fs=`ls -1 $sdkdir/filesystem/arago*sdk*multimedia*dra7*.tar.gz`
 	execute "tar zxf $root_fs -C /tmp/sdk/$$/rootfs"
 	execute "cp $sdkdir/bin/mk-eMMC-boot.sh /tmp/sdk/$$/rootfs/home/root/"
+	execute "cp $sdkdir/bin/mk-qspi-boot.sh /tmp/sdk/$$/rootfs/home/root/"
 fi
 
 sync
