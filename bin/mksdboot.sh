@@ -164,17 +164,9 @@ execute "mkdir -p /tmp/sdk/$$/rootfs"
 execute "mount ${device}1 /tmp/sdk/$$/boot"
 execute "mount ${device}2 /tmp/sdk/$$/rootfs"
 
-echo "Creating boot.scr.sd from boot.script.sd"
-mkimage -A arm -T script -C none -n "Boot Image" -d "$sdkdir/board-support/prebuilt-images/boot.script.sd" "$sdkdir/board-support/prebuilt-images/boot.scr.sd"
-
-echo "Creating boot.scr.emmc from boot.script.emmc"
-mkimage -A arm -T script -C none -n "Boot Image" -d "$sdkdir/board-support/prebuilt-images/boot.script.emmc" "$sdkdir/board-support/prebuilt-images/boot.scr.emmc"
-
 execute "cp $sdkdir/board-support/prebuilt-images/MLO /tmp/sdk/$$/boot/"
 execute "cp $sdkdir/board-support/prebuilt-images/u-boot.img /tmp/sdk/$$/boot/"
 execute "cp $sdkdir/board-support/prebuilt-images/uenv*.txt /tmp/sdk/$$/boot/"
-
-execute "cp $sdkdir/bin/README.boot.scr /tmp/sdk/$$/boot/"
 
 if [ ! -f $sdkdir/filesystem/arago*sdk*multimedia*dra7*.tar.gz ]
 then
