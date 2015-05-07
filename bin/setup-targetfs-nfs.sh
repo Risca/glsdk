@@ -116,22 +116,6 @@ else
 fi
 
 echo "--------------------------------------------------------------------------------"
-echo "This step will create boot.script and update boot.scr acordingly"
-read -p "Press return to continue" REPLY
-ipaddr=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | head -1`
-hwaddr=`ifconfig | grep 'HWaddr' | cut -d: -f2- | awk '{print $3}' | head -1`
-echo "mmc part" > boot.script.nfs
-echo "fatload mmc 0:1 0x825f0000 dra7-evm.dtb" >> boot.script.nfs
-echo "fatload mmc 0:1 0x80300000 uImage" >> boot.script.nfs
-echo "setenv bootargs 'root=/dev/nfs nfsroot=$ipaddr:$dst console=ttyO0,115200n8 earlyprintk rw ip=dhcp omapdrm.num_crtc=2 consoleblank=0 cma=64M'" >> boot.script.nfs
-echo "setenv fdt_high 0x84000000" >> boot.script.nfs
-echo "bootm 0x80300000 - 0x825f0000" >> boot.script.nfs
-mkimage -A arm -T script -C none -n "Boot Image" -d boot.script.nfs boot.scr.nfs
-echo "Updating boot.script.nfs and boot.scr.nfs"
-mv boot.script.nfs $cwd/../board-support/prebuilt-images/
-mv boot.scr.nfs $cwd/../board-support/prebuilt-images/
-
-echo "--------------------------------------------------------------------------------"
 echo "Restarting NFS and TFTP server"
 echo
 sudo /etc/init.d/nfs-kernel-server stop
