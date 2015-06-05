@@ -42,7 +42,7 @@ UBOOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/u-boot
 TMS470CGTOOLPATH_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.4
 
 # The directory where the Code Gen is installed.
-CODEGEN_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/cgt6x_7_4_2
+CODEGEN_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/cgt6x_7_4_13
 
 # The directory that points to the bios tools directory.
 BIOSTOOLSROOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources
