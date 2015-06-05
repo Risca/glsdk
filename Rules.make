@@ -16,7 +16,7 @@ DSP_FW=dra7-dsp1-fw.xe66
 XDC_VERSION=xdctools_3_30_06_67
 FC_VERSION=framework_components_3_31_00_02
 PLATFORM_IPC=DRA7XX
-LINUXUTILS_VERSION=4_00_02_11
+LINUXUTILS_VERSION=4_10_01_02
 
 # Cross compiler used for building linux and u-boot
 TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux
