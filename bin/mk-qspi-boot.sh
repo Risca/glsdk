@@ -11,8 +11,8 @@
 
 VERSION="0.1"
 qspi_dev="/dev/mtd0"
-emmc_dev="/dev/mmcblk0"
-main_dev="/dev/mmcblk1"
+emmc_dev="/dev/mmcblk1"
+main_dev="/dev/mmcblk0"
 
 execute ()
 {
@@ -138,7 +138,7 @@ done
 umount /tmp/sdk/$$/mmc_boot 2>/dev/null
 umount /tmp/sdk/$$/mmc_rootfs 2>/dev/null
 
-main_dev=/dev/mmcblk1
+main_dev=/dev/mmcblk0
 
 # Flash the MLO, uImage & other binaries in QSPI
 # Flash MLO @ 0x00000
@@ -156,10 +156,10 @@ if [ "spl_early_boot" == "$boot_mode" ];then
 fi
 
 MLO_FILE_PATH=/tmp/sdk/$$/mmc_boot/MLO.qspi
-UBOOT_FILE_PATH=/tmp/sdk/$$/mmc_boot/u-boot-qspi.img
+UBOOT_FILE_PATH=/tmp/sdk/$$/mmc_boot/u-boot.img.qspi
 if [ "spl_early_boot" == "$boot_mode" ];then
-	DTB_FILE_PATH=/tmp/sdk/$$/mmc_boot/dra7-evm.dtb
-	UIMAGE_FILE_PATH=/tmp/sdk/$$/mmc_boot/uImage
+	DTB_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/boot/devicetree-zImage-dra7-evm-lcd10.dtb
+	UIMAGE_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/boot/uImage
 	IPU_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/lib/firmware/dra7-ipu2-fw.xem4
 fi
 
