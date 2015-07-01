@@ -18,16 +18,12 @@ echo "[GLSDK]> Building on `hostname` running `uname -a`"
 echo "[GLSDK]> Starting Yocto build at `date`"
 echo "[GLSDK]>"
 
-echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.00.00.04-config.txt"
-./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.00.00.04-config.txt
+echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.01.00.03-config.txt"
+./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.01.00.03-config.txt
 
 echo "[GLSDK]> Applying patches on meta-arago"
 cd ${GLSDK}/yocto-layers/sources/meta-arago
 git am ${GLSDK}/patch/meta-arago/*.patch
-
-echo "[GLSDK]> Applying patches on oe-core"
-cd ${GLSDK}/yocto-layers/sources/oe-core
-git am ${GLSDK}/patch/oe-core/*.patch
 
 cd $GLSDK/yocto-layers
 
