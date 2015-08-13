@@ -25,45 +25,42 @@ CROSS_COMPILE_PREFIX=$(TOOLCHAIN_INSTALL_DIR)/bin/arm-linux-gnueabihf-
 # The installation directory of the SDK.
 GLSDK_INSTALL_DIR=$(shell pwd)
 
-# For backwards compatibility
-DVSDK_INSTALL_DIR=$(GLSDK_INSTALL_DIR)
-
 # The directory that points to your kernel source directory.
-LINUXKERNEL_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/linux
+LINUXKERNEL_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/board-support/linux
 KERNEL_INSTALL_DIR=$(LINUXKERNEL_INSTALL_DIR)
 
 # The directory that points to the SGX kernel module sources.
 SGX_KERNEL_MODULE_PATH=$(GLSDK_INSTALL_DIR)/board-support/external-linux-kernel-modules/omap5-sgx-ddk-linux/eurasia_km/eurasiacon/build/linux2/omap5430_linux
 
 # The directory that points to your u-boot source directory.
-UBOOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/board-support/u-boot
+UBOOT_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/board-support/u-boot
 
 # The directory that points to your ARM Code Gen tools directory
-TMS470CGTOOLPATH_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.4
+TMS470CGTOOLPATH_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.4
 
 # The directory where the Code Gen is installed.
-CODEGEN_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/ti-devkit/cgt6x_7_4_13
+CODEGEN_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/cgt6x_7_4_13
 
 # The directory that points to the bios tools directory.
-BIOSTOOLSROOT_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources
+BIOSTOOLSROOT_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/component-sources
 
 # The directory that points to your bios source directory.
-BIOS_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/bios_$(BIOS_VERSION)
+BIOS_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/component-sources/bios_$(BIOS_VERSION)
 
 # The directory that points to your bios source directory.
-XDC_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/$(XDC_VERSION)
+XDC_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/component-sources/$(XDC_VERSION)
 
 # The directory that points to your ipc source directory.
-IPC_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/ipc_$(IPC_VERSION)
+IPC_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/component-sources/ipc_$(IPC_VERSION)
 
 # The directory that points to your ipumm source directory.
-IPUMM_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/ipumm_$(IPUMM_VERSION)
+IPUMM_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/component-sources/ipumm_$(IPUMM_VERSION)
 
 # The directory that points to your dsp source directory.
-DSPDCE_INSTALL_DIR=$(DVSDK_INSTALL_DIR)/component-sources/dspdce_$(DSPDCE_VERSION)
+DSPDCE_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/component-sources/dspdce_$(DSPDCE_VERSION)
 
 # Directory where linux utils is installed
-LINUXUTILS_INSTALL_DIR=${DVSDK_INSTALL_DIR}/component-sources/linuxutils_${LINUXUTILS_VERSION}
+LINUXUTILS_INSTALL_DIR=${GLSDK_INSTALL_DIR}/component-sources/linuxutils_${LINUXUTILS_VERSION}
 
 # Kernel/U-Boot build variables
 LINUXKERNEL_BUILD_VARS = ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE_PREFIX)
@@ -99,8 +96,6 @@ DSPDCE_BUILD_VARS = BIOSTOOLSROOT=$(BIOSTOOLSROOT_INSTALL_DIR) \
     FCVERSION=$(FC_VERSION) \
     C66XCGTOOLSPATH=$(CODEGEN_INSTALL_DIR) \
     PLATFORM=$(REVISION)
-# Where to copy the resulting executables
-EXEC_DIR=$(HOME)/install/$(PLATFORM)
 
 # CMEM build variables
 # Arguments for building the kernel module
