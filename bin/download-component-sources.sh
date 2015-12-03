@@ -12,7 +12,8 @@ FRAMEWORK_COMP_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targ
 CODEC_ENGINE_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce/$CODEC_ENGINE_VERSION/exports/codec_engine_$CODEC_ENGINE_VERSION.tar.gz"
 XDAIS_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/xdais/$XDAIS_VERSION/exports/xdais_$XDAIS_VERSION.tar.gz"
 BIOS_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/bios/sysbios/$BIOS_VERSION/exports/bios_setuplinux_$BIOS_VERSION.bin"
-XDCTOOLS_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/$XDCTOOLS_VERSION/exports/xdctools_setuplinux_$XDCTOOLS_VERSION.bin"
+#XDCTOOLS_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/$XDCTOOLS_VERSION/exports/xdctools_setuplinux_$XDCTOOLS_VERSION.bin"
+XDCTOOLS_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/$XDCTOOLS_VERSION/exports/xdccore/xdctools_${XDCTOOLS_VERSION}_core_linux.zip"
 LINUXUTILS_WGET_URL="http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/linuxutils/$LINUXUTILS_VERSION/exports/linuxutils_$LINUXUTILS_VERSION.tar.gz"
 
 if [ ! -d "component-sources" ]; then
@@ -43,12 +44,14 @@ if [ ! -d "component-sources/bios_$BIOS_VERSION" ]; then
 	./bios_setuplinux_$BIOS_VERSION.bin --prefix ./component-sources/ --mode unattended
 	mv bios_setuplinux*.bin component-sources/
 fi
-if [ ! -d "component-sources/xdctools_$XDCTOOLS_VERSION" ]; then
+if [ ! -d "component-sources/xdctools_${XDCTOOLS_VERSION}_core" ]; then
 	wget -nc $XDCTOOLS_WGET_URL
 	echo "Installing XDC tools..."
-	chmod +x xdctools_setuplinux_$XDCTOOLS_VERSION.bin
-	./xdctools_setuplinux_$XDCTOOLS_VERSION.bin --prefix ./component-sources/ --mode unattended
-	mv xdctools_setuplinux*.bin component-sources/
+	#chmod +x xdctools_setuplinux_$XDCTOOLS_VERSION.bin
+	#./xdctools_setuplinux_$XDCTOOLS_VERSION.bin --prefix ./component-sources/ --mode unattended
+	#mv xdctools_setuplinux*.bin component-sources/
+	unzip xdctools_*.zip -d ./component-sources/
+        mv xdctools_*.zip ./component-sources/.
 fi
 if [ ! -d "component-sources/linuxutils_$LINUXUTILS_VERSION" ]; then
 	wget -nc $LINUXUTILS_WGET_URL
