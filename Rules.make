@@ -36,7 +36,7 @@ SGX_KERNEL_MODULE_PATH=$(GLSDK_INSTALL_DIR)/board-support/external-linux-kernel-
 UBOOT_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/board-support/u-boot
 
 # The directory that points to your ARM Code Gen tools directory
-TMS470CGTOOLPATH_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.4
+TMS470CGTOOLPATH_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.5
 
 # The directory where the Code Gen is installed.
 CODEGEN_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/cgt6x_7_4_13
