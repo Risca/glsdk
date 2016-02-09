@@ -100,7 +100,7 @@ help:
 #==============================================================================
 linux:
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=arm $(DEFAULT_LINUXKERNEL_CONFIG)
-	cd $(LINUXKERNEL_INSTALL_DIR); pwd ; ./scripts/kconfig/merge_config.sh -m .config ti_config_fragments/audio_display.cfg ti_config_fragments/baseport.cfg ti_config_fragments/connectivity.cfg ti_config_fragments/ipc.cfg ti_config_fragments/power.cfg ti_config_fragments/wlan.cfg ti_config_fragments/system_test.cfg ti_config_fragments/auto.cfg ti_config_fragments/radio.cfg 
+	cd $(LINUXKERNEL_INSTALL_DIR); pwd ; ./scripts/kconfig/merge_config.sh -m .config ti_config_fragments/audio_display.cfg ti_config_fragments/baseport.cfg ti_config_fragments/connectivity.cfg ti_config_fragments/ipc.cfg ti_config_fragments/power.cfg ti_config_fragments/wlan.cfg ti_config_fragments/system_test.cfg ti_config_fragments/auto.cfg ti_config_fragments/radio.cfg ti_config_fragments/dra7_only.cfg
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) olddefconfig ARCH=arm
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) zImage
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) $(LINUXKERNEL_BUILD_VARS) dtbs
