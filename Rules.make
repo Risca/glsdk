@@ -5,15 +5,15 @@ DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
 DEFAULT_UBOOT_CONFIG=dra7xx_evm_config
 DEFAULT_IPUMM_CONFIG=vayu_smp_config
 DEFAULT_DSPDCE_CONFIG=vayu_config
-BIOS_VERSION=6_42_02_29
-IPC_VERSION=3_40_00_06
-IPUMM_VERSION=3_00_09_00
+BIOS_VERSION=6_45_01_29
+IPC_VERSION=3_42_00_02
+IPUMM_VERSION=3_00_10_00
 DSPDCE_VERSION=1_00_00_06
 DUCATI_FW_GEN=dra7xx-m4-ipu2.xem4
 DUCATI_FW=dra7-ipu2-fw.xem4
 DSP_FW_GEN=dra7xx-c66x-dsp.xe66
 DSP_FW=dra7-dsp1-fw.xe66
-XDC_VERSION=xdctools_3_31_02_38_core
+XDC_VERSION=xdctools_3_32_00_06_core
 FC_VERSION=framework_components_3_40_01_04
 PLATFORM_IPC=DRA7XX
 LINUXUTILS_VERSION=4_10_01_02
@@ -36,7 +36,7 @@ SGX_KERNEL_MODULE_PATH=$(GLSDK_INSTALL_DIR)/board-support/external-linux-kernel-
 UBOOT_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/board-support/u-boot
 
 # The directory that points to your ARM Code Gen tools directory
-TMS470CGTOOLPATH_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.5
+TMS470CGTOOLPATH_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.7
 
 # The directory where the Code Gen is installed.
 CODEGEN_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/ti-devkit/cgt6x_7_4_13
