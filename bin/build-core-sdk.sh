@@ -18,8 +18,8 @@ echo "[GLSDK]> Building on `hostname` running `uname -a`"
 echo "[GLSDK]> Starting Yocto build at `date`"
 echo "[GLSDK]>"
 
-echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.03.00.03-config.txt"
-./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.03.00.03-config.txt
+echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt"
+./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt
 
 cd $GLSDK/yocto-layers
 
