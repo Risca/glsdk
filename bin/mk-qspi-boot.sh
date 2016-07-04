@@ -11,8 +11,8 @@
 
 VERSION="0.1"
 qspi_dev="/dev/mtd0"
-emmc_dev="/dev/mmcblk1"
-main_dev="/dev/mmcblk0"
+emmc_dev="/dev/mmcblk0"
+main_dev="/dev/mmcblk1"
 
 execute ()
 {
@@ -103,7 +103,7 @@ test -z $emmc_dev && usage $0
 test -z $boot_mode && usage $0
 
 partition=0
-while [ $partition -lt 10 ]
+while [ $partition -lt 6 ]
 do
 	if [ ! -c $qspi_dev$partition ]; then
 		echo "ERROR: $qspi_dev is not a char device file"
@@ -138,7 +138,7 @@ done
 umount /tmp/sdk/$$/mmc_boot 2>/dev/null
 umount /tmp/sdk/$$/mmc_rootfs 2>/dev/null
 
-main_dev=/dev/mmcblk0
+main_dev=/dev/mmcblk1
 
 # Flash the MLO, uImage & other binaries in QSPI
 # Flash MLO @ 0x00000
@@ -155,10 +155,10 @@ if [ "spl_early_boot" == "$boot_mode" ];then
 	execute "mount ${main_dev}p2 /tmp/sdk/$$/mmc_rootfs"
 fi
 
-MLO_FILE_PATH=/tmp/sdk/$$/mmc_boot/MLO.qspi
-UBOOT_FILE_PATH=/tmp/sdk/$$/mmc_boot/u-boot.img.qspi
+MLO_FILE_PATH=/tmp/sdk/$$/mmc_boot/MLO
+UBOOT_FILE_PATH=/tmp/sdk/$$/mmc_boot/u-boot.img
 if [ "spl_early_boot" == "$boot_mode" ];then
-	DTB_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/boot/devicetree-zImage-dra7-evm-lcd10.dtb
+	DTB_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/boot/devicetree-zImage-dra7-evm-lcd-osd.dtb
 	UIMAGE_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/boot/uImage
 	IPU_FILE_PATH=/tmp/sdk/$$/mmc_rootfs/lib/firmware/dra7-ipu2-fw.xem4
 fi
@@ -174,16 +174,16 @@ fi
 # QSPI Flash chip erase
 if [ "spl_early_boot" == "$boot_mode" ];then
 	echo "Started qspi flash chip erase"
-	execute "flash_erase -N /dev/mtd0 0 1"
-	execute "flash_erase -N /dev/mtd4 0 16"
-	execute "flash_erase -N /dev/mtd5 0 8"
-	execute "flash_erase -N /dev/mtd8 0 128"
-	execute "flash_erase -N /dev/mtd9 0 354"
+	execute "flash_erase -N /dev/mtd0 0 4"
+	execute "flash_erase -N /dev/mtd1 0 16"
+	execute "flash_erase -N /dev/mtd2 0 8"
+	execute "flash_erase -N /dev/mtd5 0 128"
+	execute "flash_erase -N /dev/mtd6 0 354"
 	echo "Erase completed"
 else
 	echo "Started qspi flash block erase"
-	execute "flash_erase -N /dev/mtd0 0 1"
-	execute "flash_erase -N /dev/mtd4 0 16"
+	execute "flash_erase -N /dev/mtd0 0 4"
+	execute "flash_erase -N /dev/mtd1 0 16"
 	echo "Erase completed"
 fi
 
@@ -192,7 +192,7 @@ execute "mtd_debug write /dev/mtd0 0 $(ls -l $MLO_FILE_PATH | awk '{ print $5 }'
 echo "MLO flashing completed"
 
 echo "Flashing u-boot.img image  @ 0x040000"
-execute "mtd_debug write /dev/mtd4 0 $(ls -l $UBOOT_FILE_PATH | awk '{ print $5 }') $UBOOT_FILE_PATH"
+execute "mtd_debug write /dev/mtd1 0 $(ls -l $UBOOT_FILE_PATH | awk '{ print $5 }') $UBOOT_FILE_PATH"
 echo "u-boot.img flashing completed"
 
 if [ "two_stage_boot" == "$boot_mode" ];then
@@ -204,15 +204,15 @@ if [ "two_stage_boot" == "$boot_mode" ];then
 fi
 
 echo "Flashing DRA7xx DTB file @ 0x140000"
-execute "mtd_debug write /dev/mtd5 0 $(ls -l $DTB_FILE_PATH | awk '{ print $5 }') $DTB_FILE_PATH"
+execute "mtd_debug write /dev/mtd2 0 $(ls -l $DTB_FILE_PATH | awk '{ print $5 }') $DTB_FILE_PATH"
 echo "DRA7xx DTB file flashing completed"
 
 echo "Flashing uImage @ 0x1e0000"
-execute "mtd_debug write /dev/mtd8 0 $(ls -l $UIMAGE_FILE_PATH | awk '{    print $5 }') $UIMAGE_FILE_PATH"
+execute "mtd_debug write /dev/mtd5 0 $(ls -l $UIMAGE_FILE_PATH | awk '{    print $5 }') $UIMAGE_FILE_PATH"
 echo "uImage flashimg completed"
 
 echo "Flashing IPU image @ 0x9e0000"
-execute "mtd_debug write /dev/mtd9 0 $(ls -l $IPU_FILE_PATH | awk '{ print $5 }') $IPU_FILE_PATH"
+execute "mtd_debug write /dev/mtd6 0 $(ls -l $IPU_FILE_PATH | awk '{ print $5 }') $IPU_FILE_PATH"
 echo "IPU image flashing completed"
 
 execute "dd if=/dev/zero of=$emmc_dev bs=1024 count=1024"
@@ -223,12 +223,12 @@ cat << END | fdisk -H 255 -S 63 $emmc_dev
 n
 p
 1
-
+4096
 +64M
 n
 p
 2
-
+150000
 
 t
 1
