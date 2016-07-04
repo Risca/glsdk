@@ -9,7 +9,7 @@
 #
 
 VERSION="0.1"
-mmc_dev="/dev/mmcblk0"
+mmc_dev="/dev/mmcblk1"
 
 execute ()
 {
@@ -116,7 +116,7 @@ for i in `ls -1 ${device}p?`; do
  umount $i 2>/dev/null
 done
 
-execute "dd if=/dev/zero of=$device bs=1024 count=1024"
+execute "dd if=/dev/zero of=$device bs=1024 count=2048"
 
 sync
 
@@ -124,12 +124,12 @@ cat << END | fdisk -H 255 -S 63 $device
 n
 p
 1
-
+4096
 +64M
 n
 p
 2
-
+150000
 
 t
 1
