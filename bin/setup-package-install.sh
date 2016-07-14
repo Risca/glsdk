@@ -2,7 +2,7 @@
 
 . `dirname $0`/common.sh
 
-cmd="sudo apt-get install xinetd tftpd nfs-kernel-server minicom build-essential libncurses5-dev uboot-mkimage autoconf automake python git diffstat texinfo gawk chrpath subversion dos2unix m2crypto lzop"
+cmd="sudo apt-get install ssh corkscrew gawk texinfo chrpath git-email g++ libc6:i386 libc6-i386 libstdc++6:i386 libncurses5:i386 libz1:i386 libc6:i386 libc6-dev-i386"
 echo "--------------------------------------------------------------------------------"
 echo "This step will make sure you have the proper host support packages installed"
 echo "using the following command: $cmd"
