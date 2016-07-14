@@ -6,7 +6,6 @@ CODEC_ENGINE_VERSION="3_24_00_08"
 XDAIS_VERSION="7_24_00_04"
 BIOS_VERSION="6_45_01_29"
 XDCTOOLS_VERSION="3_32_00_06"
-LINUXUTILS_VERSION="4_11_00_01"
 
 FRAMEWORK_COMP_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/fc/$FRAMEWORK_COMP_VERSION/exports/framework_components_$FRAMEWORK_COMP_VERSION.tar.gz"
 CODEC_ENGINE_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce/$CODEC_ENGINE_VERSION/exports/codec_engine_$CODEC_ENGINE_VERSION.tar.gz"
@@ -52,10 +51,4 @@ if [ ! -d "component-sources/xdctools_${XDCTOOLS_VERSION}_core" ]; then
 	#mv xdctools_setuplinux*.bin component-sources/
 	unzip xdctools_*.zip -d ./component-sources/
         mv xdctools_*.zip ./component-sources/.
-fi
-if [ ! -d "component-sources/linuxutils_$LINUXUTILS_VERSION" ]; then
-	wget -nc $LINUXUTILS_WGET_URL
-	echo "Installing Linux Utils"
-	tar -zxf linuxutils_$LINUXUTILS_VERSION.tar.gz -C component-sources/
-	mv linuxutils*.tar.gz component-sources/
 fi
