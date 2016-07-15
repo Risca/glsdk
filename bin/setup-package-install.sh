@@ -2,7 +2,7 @@
 
 . `dirname $0`/common.sh
 
-cmd="sudo apt-get install ssh corkscrew gawk texinfo chrpath git-email g++ libc6:i386 libc6-i386 libstdc++6:i386 libncurses5:i386 libz1:i386 libc6:i386 libc6-dev-i386"
+cmd="sudo apt-get install ssh corkscrew gawk texinfo chrpath git-email g++ libc6:i386 libc6-i386 libstdc++6:i386 libncurses5:i386 libz1:i386 libc6:i386 libc6-dev-i386 device-tree-compiler"
 echo "--------------------------------------------------------------------------------"
 echo "This step will make sure you have the proper host support packages installed"
 echo "using the following command: $cmd"
