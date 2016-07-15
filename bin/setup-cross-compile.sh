@@ -4,7 +4,7 @@ cwd=`dirname $0`
 . $cwd/common.sh
 
 ccdefault="${HOME}"
-ccbinary="gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux"
+ccbinary="gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf"
 
 echo
 echo "--------------------------------------------------------------------------------"
@@ -32,11 +32,11 @@ mkdir -p $dst
 echo "--------------------------------------------------------------------------------"
 
 fetch_cc() {
-    ccBinaryURL="https://launchpad.net/linaro-toolchain-binaries/trunk/2013.03/+download/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2"
+    ccBinaryURL="https://releases.linaro.org/components/toolchain/binaries/5.3-2016.02/arm-linux-gnueabihf/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz"
     check_status
     wget --no-check-certificate $ccBinaryURL
     check_status
-    tar -jxf "$ccbinary.tar.bz2" -C $1
+    tar -Jxf "$ccbinary.tar.xz" -C $1
     check_status
     echo
     echo "Successfully extracted the cross compiler to $1"
