@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dwndefault="${GLSDK}/yocto-layers/downloads"
+dwndefault="${PSDKLA}/yocto-layers/downloads"
 
 echo "In which directory do you want to place the downloads for the Yocto build ?(if this directory does not exist it will be created)"
 echo "Ensure that complete path is provided."
@@ -11,36 +11,36 @@ if [ ! -n "$dwn" ]; then
     dwn=$dwndefault
 fi
 
-echo "[GLSDK]>"
-echo "[GLSDK]> Current Directory is `pwd`"
-echo "[GLSDK]> PATH is $PATH"
-echo "[GLSDK]> Building on `hostname` running `uname -a`"
-echo "[GLSDK]> Starting Yocto build at `date`"
-echo "[GLSDK]>"
+echo "[PSDKLA]>"
+echo "[PSDKLA]> Current Directory is `pwd`"
+echo "[PSDKLA]> PATH is $PATH"
+echo "[PSDKLA]> Building on `hostname` running `uname -a`"
+echo "[PSDKLA]> Starting Yocto build at `date`"
+echo "[PSDKLA]>"
 
-echo "[GLSDK]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt"
+echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt"
 ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt
 
-cd $GLSDK/yocto-layers
+cd $PSDKLA/yocto-layers
 
-echo "[GLSDK]> cd build"
-cd ${GLSDK}/yocto-layers/build
+echo "[PSDKLA]> cd build"
+cd ${PSDKLA}/yocto-layers/build
 
-echo "[GLSDK]> . conf/setenv"
+echo "[PSDKLA]> . conf/setenv"
 . conf/setenv
 
-echo "[GLSDK]> cp conf/local.conf conf/local.conf.pristine"
+echo "[PSDKLA]> cp conf/local.conf conf/local.conf.pristine"
 cp conf/local.conf conf/local.conf.pristine
 
-echo "[GLSDK]> echo ARAGO_BRAND = \"glsdk\" >> conf/local.conf"
+echo "[PSDKLA]> echo ARAGO_BRAND = \"glsdk\" >> conf/local.conf"
 echo "ARAGO_BRAND = \"glsdk\"" >> conf/local.conf
 
 mkdir -p $dwn
 sed -i -e "s#^DL_DIR =.*#DL_DIR = \"${dwn}\"#" conf/local.conf
 
-echo "[GLSDK]> MACHINE=$1 bitbake arago-glsdk-multimedia-image"
+echo "[PSDKLA]> MACHINE=$1 bitbake arago-glsdk-multimedia-image"
 MACHINE=$1 bitbake arago-glsdk-multimedia-image
 
-echo "[GLSDK]>"
-echo "[GLSDK]> Completed Yocto build at `date`"
-echo "[GLSDK]>"
+echo "[PSDKLA]>"
+echo "[PSDKLA]> Completed Yocto build at `date`"
+echo "[PSDKLA]>"

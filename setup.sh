@@ -71,6 +71,6 @@ if [ $choice = "y" -o $choice = "Y" ]; then
 fi
 
 echo
-echo "GLSDK setup completed!"
+echo "Process SDK Linux Automotive setup completed!"
 echo "Please continue reading the Software Developer's Guide for more information on"
 echo "how to develop software on the EVM"

@@ -16,7 +16,7 @@ if [ -f "$repodst" ]; then
 
 else
     echo "--------------------------------------------------------------------------------"
-    echo "ERROR. Please run this script from the GLSDK root folder "
+    echo "ERROR. Please run this script from the Processor SDK Linux Automotive root folder "
     echo "--------------------------------------------------------------------------------"
 fi
 
