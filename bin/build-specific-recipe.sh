@@ -13,9 +13,6 @@ cd build
 echo "[PSDKLA]> cp conf/local.conf conf/local.conf.pristine"
 cp conf/local.conf conf/local.conf.pristine
 
-echo "[PSDKLA]> echo ARAGO_BRAND = \"glsdk\" >> conf/local.conf"
-echo "ARAGO_BRAND = \"glsdk\"" >> conf/local.conf
-
 echo "[PSDKLA]> . conf/setenv"
 . conf/setenv
 

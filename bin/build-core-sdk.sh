@@ -18,8 +18,8 @@ echo "[PSDKLA]> Building on `hostname` running `uname -a`"
 echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
-echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt"
-./oe-layertool-setup.sh -f configs/glsdk/glsdk-7.04.00.03-config.txt
+echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.00.00.03.txt"
+./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.00.00.03.txt
 
 cd $PSDKLA/yocto-layers
 
@@ -31,9 +31,6 @@ echo "[PSDKLA]> . conf/setenv"
 
 echo "[PSDKLA]> cp conf/local.conf conf/local.conf.pristine"
 cp conf/local.conf conf/local.conf.pristine
-
-echo "[PSDKLA]> echo ARAGO_BRAND = \"glsdk\" >> conf/local.conf"
-echo "ARAGO_BRAND = \"glsdk\"" >> conf/local.conf
 
 mkdir -p $dwn
 sed -i -e "s#^DL_DIR =.*#DL_DIR = \"${dwn}\"#" conf/local.conf

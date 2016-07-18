@@ -20,8 +20,10 @@ cp bin/build-core-sdk.sh yocto-layers
 echo "[PSDKLA]> cd yocto-layers"
 cd yocto-layers
 
-echo ["PSDKLA]>  cp ../config/*.* configs/glsdk/. "
-cp ../config/*.* configs/glsdk/.
+echo ["PSDKLA]>  mkdir configs/psdkla/. "
+mkdir configs/psdkla/
+echo ["PSDKLA]>  cp ../config/*.* configs/psdkla/. "
+cp ../config/*.* configs/psdkla/.
 
 echo "[PSDKLA]>"
 echo "[PSDKLA]> Completed Yocto setup. You can now build using Yocto"
