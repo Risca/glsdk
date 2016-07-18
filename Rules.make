@@ -30,7 +30,7 @@ LINUXKERNEL_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/board-support/linux
 KERNEL_INSTALL_DIR=$(LINUXKERNEL_INSTALL_DIR)
 
 # The directory that points to the SGX kernel module sources.
-SGX_KERNEL_MODULE_PATH=$(GLSDK_INSTALL_DIR)/board-support/external-linux-kernel-modules/omap5-sgx-ddk-linux/eurasia_km/eurasiacon/build/linux2/omap5430_linux
+SGX_KERNEL_MODULE_PATH=$(GLSDK_INSTALL_DIR)/board-support/external-linux-kernel-modules/omap5-sgx-ddk-linux/eurasia_km/eurasiacon/build/linux2/omap_linux
 
 # The directory that points to your u-boot source directory.
 UBOOT_INSTALL_DIR=$(GLSDK_INSTALL_DIR)/board-support/u-boot
