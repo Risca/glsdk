@@ -39,8 +39,8 @@ echo "[PSDKLA]> Building on `hostname` running `uname -a`"
 echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
-echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.00.00.03.txt"
-./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.00.00.03.txt
+echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.01.00.03.txt"
+./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.01.00.03.txt
 
 cd $PSDKLA/yocto-layers
 
