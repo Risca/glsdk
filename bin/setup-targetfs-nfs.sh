@@ -25,12 +25,12 @@ echo "on your host."
 read -p "Press return to continue" REPLY
 
 extract_fs() {
-    fstar=`ls -1 $cwd/../filesystem/tisdk-rootfs-image*dra7*.tar.gz`
+    fstar=`ls -1 $cwd/../filesystem/tisdk-rootfs-image*dra7*.tar.xz`
     me=`whoami`
     sudo mkdir -p $1
     check_status
     echo "Please wait while extracting NFS filesystem..."
-    sudo tar xzf $fstar -C $1
+    sudo tar xf $fstar -C $1
     check_status
     sudo chown $me:$me $1 
     check_status

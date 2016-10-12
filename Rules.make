@@ -6,17 +6,17 @@ DEFAULT_UBOOT_CONFIG=dra7xx_evm_config
 DEFAULT_IPUMM_CONFIG=vayu_smp_config
 DEFAULT_DSPDCE_CONFIG=vayu_config
 BIOS_VERSION=6_45_01_29
-IPC_VERSION=3_43_01_03
-IPUMM_VERSION=3_00_11_00
+IPC_VERSION=3_43_03_05
+IPUMM_VERSION=3_00_12_00
 DSPDCE_VERSION=1_00_00_08
 DUCATI_FW_GEN=dra7xx-m4-ipu2.xem4
 DUCATI_FW=dra7-ipu2-fw.xem4
 DSP_FW_GEN=dra7xx-c66x-dsp.xe66
 DSP_FW=dra7-dsp1-fw.xe66
 XDC_VERSION=xdctools_3_32_00_06_core
-FC_VERSION=framework_components_3_40_01_04
+FC_VERSION=framework_components_3_40_02_07
 PLATFORM_IPC=DRA7XX
-LINUXUTILS_VERSION=4_11_00_01
+LINUXUTILS_VERSION=4_12_00_00
 
 # Cross compiler used for building linux and u-boot
 TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf
@@ -39,7 +39,7 @@ UBOOT_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/board-support/u-boot
 TMS470CGTOOLPATH_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.7
 
 # The directory where the Code Gen is installed.
-CODEGEN_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/ti-devkit/cgt6x_7_4_13
+CODEGEN_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/ti-devkit/ti-cgt-c6000_8.1.0
 
 # The directory that points to the bios tools directory.
 BIOSTOOLSROOT_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/component-sources
@@ -67,7 +67,7 @@ LINUXKERNEL_BUILD_VARS = ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE_PREFIX)
 UBOOT_BUILD_VARS = CROSS_COMPILE=$(CROSS_COMPILE_PREFIX)
 
 # Where to copy the resulting executables
-EXEC_DIR=$(HOME)/install/$(PLATFORM)
+EXEC_DIR=/home/a0132412/targetfs/home/root/dra7xx
 
 # IPC variables
 IPC_BUILD_VARS = TMS470CGTOOLPATH=$(TMS470CGTOOLPATH_INSTALL_DIR) \
