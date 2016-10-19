@@ -4,7 +4,7 @@ TOOLS_DOWNLOAD_LOCATION=$HOME
 
 GCC_LINARO_TOOLCHAIN_PATH=$TOOLS_DOWNLOAD_LOCATION/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/
 CCS_DOWNLOAD_LOCATION=$TOOLS_DOWNLOAD_LOCATION
-CCS_VERSION=CCS6.1.3.00033_linux.tar.gz
+CCS_VERSION=CCS6.1.3.00034_linux.tar.gz
 
 if [ -d "$GCC_LINARO_TOOLCHAIN_PATH" ]; then
     echo "SUCCESS: GCC Linaro tool chain path has been set correctly"
