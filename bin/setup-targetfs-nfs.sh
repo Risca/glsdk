@@ -26,15 +26,14 @@ read -p "Press return to continue" REPLY
 
 extract_fs() {
     fstar=`ls -1 $cwd/../filesystem/tisdk-rootfs-image*dra7*.tar.xz`
-    me=`whoami`
     sudo mkdir -p $1
     check_status
     echo "Please wait while extracting NFS filesystem..."
     sudo tar xf $fstar -C $1
     check_status
-    sudo chown $me:$me $1 
+    sudo chown $USER:$(id -gn $USER) $1 
     check_status
-    sudo chown -R $me:$me $1/home $1/usr $1/etc $1/lib $1/boot
+    sudo chown -R $USER:$(id -gn $USER) $1/home $1/usr $1/etc $1/lib $1/boot
     check_status
     echo
     echo "Successfully extracted `basename $fstar` to $1"
