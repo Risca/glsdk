@@ -21,7 +21,7 @@ else
     exit 1
 fi 
 
-dwndefault="${PSDKLA}/yocto-layers/downloads"
+dwndefault="${INSTALL_DIR}/yocto-layers/downloads"
 
 echo "In which directory do you want to place the downloads for the Yocto build ?(if this directory does not exist it will be created)"
 echo "Ensure that complete path is provided."
@@ -42,10 +42,10 @@ echo "[PSDKLA]>"
 echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.01.00.03.txt"
 ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.01.00.03.txt
 
-cd $PSDKLA/yocto-layers
+cd ${INSTALL_DIR}/yocto-layers
 
 echo "[PSDKLA]> cd build"
-cd ${PSDKLA}/yocto-layers/build
+cd ${INSTALL_DIR}/yocto-layers/build
 
 echo "[PSDKLA]> . conf/setenv"
 . conf/setenv
