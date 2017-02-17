@@ -4,8 +4,8 @@
 FRAMEWORK_COMP_VERSION="3_40_02_07"
 CODEC_ENGINE_VERSION="3_24_00_08"
 XDAIS_VERSION="7_24_00_04"
-BIOS_VERSION="6_45_01_29"
-XDCTOOLS_VERSION="3_32_00_06"
+BIOS_VERSION="6_46_01_38"
+XDCTOOLS_VERSION="3_32_01_22"
 
 FRAMEWORK_COMP_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/fc/$FRAMEWORK_COMP_VERSION/exports/framework_components_$FRAMEWORK_COMP_VERSION.tar.gz"
 CODEC_ENGINE_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce/$CODEC_ENGINE_VERSION/exports/codec_engine_$CODEC_ENGINE_VERSION.tar.gz"
