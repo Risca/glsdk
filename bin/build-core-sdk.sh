@@ -8,7 +8,7 @@ echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
 echo "[PSDKLA]> cd build"
-cd yocto-layers/build
+cd build
 
 echo "[PSDKLA]> . conf/setenv"
 . conf/setenv
