@@ -70,6 +70,16 @@ if [ $choice = "y" -o $choice = "Y" ]; then
     $cwd/bin/fetch-sources.sh
 fi
 
+
+echo "Do you want to extract linux-devkit y/N "
+read -p "[ n ]" choice
+if [  ! -n "$choice" ]; then
+    choice="n"
+fi
+if [ $choice = "y" -o $choice = "Y" ]; then
+    $cwd/bin/setup-linux-devkit.sh
+fi
+
 echo
 echo "Process SDK Linux Automotive setup completed!"
 echo "Please continue reading the Software Developer's Guide for more information on"
