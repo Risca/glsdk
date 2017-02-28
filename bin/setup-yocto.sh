@@ -24,6 +24,8 @@ cp bin/build-specific-recipe.sh yocto-layers
 cp bin/clean-specific-recipe.sh yocto-layers
 cp bin/build-core-sdk.sh yocto-layers
 
+chmod +x bin/setup-linux-devkit.sh
+
 
 echo "[PSDKLA]> cd yocto-layers"
 cd yocto-layers
