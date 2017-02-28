@@ -3,10 +3,10 @@
 
 bitbake,git://git.openembedded.org/bitbake,1.30,449dc9b955dfbe048e380f5ab9fd61c3d1489dad,layers=
 meta-glsdk,git://arago-project.org/git/projects/meta-glsdk.git,master,0b4164e1f4a1ddf05f1d2386e8b125cd92c9fadc,layers=
-meta-arago,git://arago-project.org/git/meta-arago.git,krogoth,c352a93209e7f45b4c92219b22b08b6ab692c924,layers=meta-arago-distro:meta-arago-extras
-meta-qt5,git://github.com/meta-qt5/meta-qt5.git,krogoth,2b1871f0d139dc3caaa779a32a1931409c245a36,layers=
+meta-arago,git://arago-project.org/git/meta-arago.git,krogoth,8f4d19340ff6844151ad64c52458ee2103e25e2c,layers=meta-arago-distro:meta-arago-extras
+meta-qt5,git://github.com/meta-qt5/meta-qt5.git,krogoth,1100037b9becaaa5749602bca9d63693119c4585,layers=
 meta-openembedded,git://git.openembedded.org/meta-openembedded,krogoth,55c8a76da5dc099a7bc3838495c672140cedb78e,layers=meta-networking:meta-ruby:meta-python:meta-oe
-meta-ti,git://arago-project.org/git/meta-ti.git,krogoth,f06c713f64c2e493b2b824578673d7ddbf821ae5,layers=
+meta-ti,git://arago-project.org/git/meta-ti.git,krogoth,2a474f9f2cc6972f337f09805f0af17b371033d5,layers=
 meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,krogoth,2f51d38048599d9878f149d6d15539fb97603f8f,layers=meta-linaro-toolchain:meta-optee
 oe-core,git://git.openembedded.org/openembedded-core,krogoth,28da89a20b70f2bf0c85da6e8af5d94a3b7d76c9,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
