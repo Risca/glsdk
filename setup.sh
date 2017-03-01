@@ -77,6 +77,7 @@ if [  ! -n "$choice" ]; then
     choice="n"
 fi
 if [ $choice = "y" -o $choice = "Y" ]; then
+    chmod +x $cwd/bin/setup-linux-devkit.sh
     $cwd/bin/setup-linux-devkit.sh
 fi
 
