@@ -3,8 +3,6 @@
 TOOLS_DOWNLOAD_LOCATION=/sdk/tools
 
 GCC_LINARO_TOOLCHAIN_PATH=$TOOLS_DOWNLOAD_LOCATION/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/
-CCS_DOWNLOAD_LOCATION=$TOOLS_DOWNLOAD_LOCATION
-CCS_VERSION=CCS6.1.3.00034_linux.tar.gz
 PSDKLA=$(pwd)
 
 echo "[PSDKLA]>"
@@ -41,14 +39,6 @@ else
     exit 1
 fi
 
-
-if [ -f "$CCS_DOWNLOAD_LOCATION/$CCS_VERSION" ]; then
-    echo "SUCCESS: CCS path has been set correctly"
-else
-    echo "ERROR: CCS has not been downloaded, please download it from TI website and place it in this path: $CCS_DOWNLOAD_LOCATION/$CCS_VERSION"
-    exit 1
-fi 
-
 dwndefault="${PSDKLA}/yocto-layers/downloads"
 
 echo "In which directory do you want to place the downloads for the Yocto build ?(if this directory does not exist it will be created)"
@@ -67,8 +57,8 @@ echo "[PSDKLA]> Building on `hostname` running `uname -a`"
 echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
-echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.03.00.03.txt"
-./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.03.00.03.txt
+echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.04.00.01.txt"
+./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.04.00.01.txt
 
 echo "[PSDKLA]> cd build"
 cd ${PSDKLA}/yocto-layers/build
@@ -81,10 +71,6 @@ cp conf/local.conf conf/local.conf.pristine
 
 mkdir -p $dwn
 sed -i -e "s#^DL_DIR =.*#DL_DIR = \"${dwn}\"#" conf/local.conf
-
-cp $CCS_DOWNLOAD_LOCATION/$CCS_VERSION $dwn/.
-touch $dwn/$CCS_VERSION.done
-
 
 echo "[PSDKLA]>"
 echo "[PSDKLA]> Completed Yocto setup. You can now build using Yocto"

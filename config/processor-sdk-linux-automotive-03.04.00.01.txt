@@ -1,0 +1,13 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+bitbake,git://git.openembedded.org/bitbake,1.30,a37d0f0247c9174fec124789b7a07c792193d909,layers=
+meta-glsdk,git://arago-project.org/git/projects/meta-glsdk.git,master,HEAD,layers=
+meta-arago,git://arago-project.org/git/meta-arago.git,krogoth,91297a97674860dac187528a3b6e43a37bd718ba,layers=meta-arago-distro:meta-arago-extras
+meta-qt5,git://github.com/meta-qt5/meta-qt5.git,krogoth,f8584d7a7c90afc71484a40279aa3df651d0e04f,layers=
+meta-openembedded,git://git.openembedded.org/meta-openembedded,krogoth,55c8a76da5dc099a7bc3838495c672140cedb78e,layers=meta-networking:meta-ruby:meta-python:meta-oe
+meta-ti,git://arago-project.org/git/meta-ti.git,krogoth,ce7a22fca2e531dfbad303fd697a0f91e1c6147e,layers=
+meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,krogoth,2f51d38048599d9878f149d6d15539fb97603f8f,layers=meta-linaro-toolchain:meta-optee
+oe-core,git://git.openembedded.org/openembedded-core,krogoth,bfa04fa71c47e8fe9528208848cfcec2e232777d,layers=meta
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64.conf.sample
