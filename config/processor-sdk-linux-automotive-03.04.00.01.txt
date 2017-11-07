@@ -2,7 +2,7 @@
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 
 bitbake,git://git.openembedded.org/bitbake,1.30,a37d0f0247c9174fec124789b7a07c792193d909,layers=
-meta-glsdk,git://arago-project.org/git/projects/meta-glsdk.git,master,HEAD,layers=
+meta-glsdk,git://arago-project.org/git/projects/meta-glsdk.git,master,babba9b514bc65c84d621365caceee6fdb61d0df,layers=
 meta-arago,git://arago-project.org/git/meta-arago.git,krogoth,91297a97674860dac187528a3b6e43a37bd718ba,layers=meta-arago-distro:meta-arago-extras
 meta-qt5,git://github.com/meta-qt5/meta-qt5.git,krogoth,f8584d7a7c90afc71484a40279aa3df651d0e04f,layers=
 meta-openembedded,git://git.openembedded.org/meta-openembedded,krogoth,55c8a76da5dc099a7bc3838495c672140cedb78e,layers=meta-networking:meta-ruby:meta-python:meta-oe
