@@ -1,1 +1,1 @@
-args_mmc=part uuid mmc 0:2 uuid; setenv bootargs "console=ttyO0,115200n8 elevator=noop root=PARTUUID=${uuid} rw rootwait earlyprintk fixrtc omapdrm.num_crtc=2 consoleblank=0 cma=64M rootfstype=ext4 snd.slots_reserved=1,1"
+args_mmc=part uuid mmc 0:2 uuid; setenv bootargs "console=ttyO0,115200n8 elevator=noop root=PARTUUID=${uuid} rw rootwait earlyprintk fixrtc omapdrm.num_crtc=2 consoleblank=0 cma=128M@0xB0000000 rootfstype=ext4 snd.slots_reserved=1,1"
