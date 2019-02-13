@@ -17,7 +17,7 @@ echo "[PSDKLA]> cp conf/local.conf conf/local.conf.pristine"
 cp conf/local.conf conf/local.conf.pristine
 
 echo "[PSDKLA]> MACHINE=$1 bitbake tisdk-rootfs-image "
-MACHINE=$1 bitbake tisdk-rootfs-image 
+TOOLCHAIN_BASE=/sdk/tools MACHINE=$1 bitbake tisdk-rootfs-image 
 
 echo "[PSDKLA]>"
 echo "[PSDKLA]> Completed Yocto build at `date`"

@@ -26,12 +26,6 @@ cp bin/build-core-sdk.sh yocto-layers
 echo "[PSDKLA]> cd yocto-layers"
 cd yocto-layers
 
-echo ["PSDKLA]>  mkdir configs/psdkla/. "
-mkdir configs/psdkla/
-
-echo ["PSDKLA]>  cp ../config/*.* configs/psdkla/. "
-cp ../config/*.* configs/psdkla/.
-
 if [ -d "$GCC_LINARO_TOOLCHAIN_PATH" ]; then
     echo "SUCCESS: GCC Linaro tool chain path has been set correctly"
 else
@@ -57,8 +51,8 @@ echo "[PSDKLA]> Building on `hostname` running `uname -a`"
 echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
-echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.04.00.03.txt"
-./oe-layertool-setup.sh -f configs/psdkla/processor-sdk-linux-automotive-03.04.00.03.txt
+echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/coresdk/coresdk-2018.05-config.txt"
+./oe-layertool-setup.sh -f configs/coresdk/coresdk-2018.05-config.txt
 
 echo "[PSDKLA]> cd build"
 cd ${PSDKLA}/yocto-layers/build
