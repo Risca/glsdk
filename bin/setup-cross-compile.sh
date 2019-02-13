@@ -4,7 +4,7 @@ cwd=`dirname $0`
 . $cwd/common.sh
 
 ccdefault="${HOME}"
-ccbinary="gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf"
+ccbinary="gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf"
 
 echo
 echo "--------------------------------------------------------------------------------"
@@ -32,7 +32,7 @@ mkdir -p $dst
 echo "--------------------------------------------------------------------------------"
 
 fetch_cc() {
-    ccBinaryURL="https://releases.linaro.org/components/toolchain/binaries/5.3-2016.02/arm-linux-gnueabihf/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz"
+    ccBinaryURL="http://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabihf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz"
     check_status
     wget --no-check-certificate $ccBinaryURL
     check_status

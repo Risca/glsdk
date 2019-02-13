@@ -6,8 +6,8 @@ DEFAULT_UBOOT_CONFIG=dra7xx_evm_config
 DEFAULT_IPUMM_CONFIG=vayu_smp_config
 DEFAULT_DSPDCE_CONFIG=vayu_config
 BIOS_VERSION=6_52_00_12
-IPC_VERSION=3_47_00_00
-IPUMM_VERSION=3_00_14_00
+IPC_VERSION=3_50_03_03
+IPUMM_VERSION=3_00_15_00
 DSPDCE_VERSION=1_00_00_08
 DUCATI_FW_GEN=dra7xx-m4-ipu2.xem4
 DUCATI_FW=dra7-ipu2-fw.xem4
@@ -16,10 +16,10 @@ DSP_FW=dra7-dsp1-fw.xe66
 XDC_VERSION=xdctools_3_50_03_33_core
 FC_VERSION=framework_components_3_40_02_07
 PLATFORM_IPC=DRA7XX
-LINUXUTILS_VERSION=4_14_01_00
+LINUXUTILS_VERSION=4_15_00_02
 
 # Cross compiler used for building linux and u-boot
-TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf
+TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
 CROSS_COMPILE_PREFIX=$(TOOLCHAIN_INSTALL_DIR)/bin/arm-linux-gnueabihf-
 
 # The installation directory of the SDK.

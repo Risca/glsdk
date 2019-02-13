@@ -2,7 +2,7 @@
 
 TOOLS_DOWNLOAD_LOCATION=/sdk/tools
 
-GCC_LINARO_TOOLCHAIN_PATH=$TOOLS_DOWNLOAD_LOCATION/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/
+GCC_LINARO_TOOLCHAIN_PATH=$TOOLS_DOWNLOAD_LOCATION/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin/
 PSDKLA=$(pwd)
 
 echo "[PSDKLA]>"
