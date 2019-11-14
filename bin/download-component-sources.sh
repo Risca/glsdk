@@ -4,8 +4,8 @@
 FRAMEWORK_COMP_VERSION="3_40_02_07"
 CODEC_ENGINE_VERSION="3_24_00_08"
 XDAIS_VERSION="7_24_00_04"
-BIOS_VERSION="6_73_00_12"
-XDCTOOLS_VERSION="3_50_07_20"
+BIOS_VERSION="6_76_02_02"
+XDCTOOLS_VERSION="3_55_02_22"
 
 FRAMEWORK_COMP_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/fc/$FRAMEWORK_COMP_VERSION/exports/framework_components_$FRAMEWORK_COMP_VERSION.tar.gz"
 CODEC_ENGINE_WGET_URL="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ce/$CODEC_ENGINE_VERSION/exports/codec_engine_$CODEC_ENGINE_VERSION.tar.gz"
@@ -18,32 +18,32 @@ if [ ! -d "component-sources" ]; then
 	mkdir "component-sources"
 fi
 if [ ! -d "component-sources/framework_components_$FRAMEWORK_COMP_VERSION" ]; then
-	wget -nc $FRAMEWORK_COMP_WGET_URL
+	wget -nc $FRAMEWORK_COMP_WGET_URL --no-check-certificate
 	echo "Extracting framework components..."
 	tar -zxf framework_components_$FRAMEWORK_COMP_VERSION.tar.gz -C component-sources/
 	mv framework_components*.tar.gz component-sources/
 fi
 if [ ! -d "component-sources/codec_engine_$CODEC_ENGINE_VERSION" ]; then
-	wget -nc $CODEC_ENGINE_WGET_URL
+	wget -nc $CODEC_ENGINE_WGET_URL --no-check-certificate
 	echo "Extracting codec engine..."
 	tar -zxf codec_engine_$CODEC_ENGINE_VERSION.tar.gz -C component-sources/
 	mv codec_engine*.tar.gz component-sources/
 fi
 if [ ! -d "component-sources/xdais_$XDAIS_VERSION" ]; then
-	wget -nc $XDAIS_WGET_URL
+	wget -nc $XDAIS_WGET_URL --no-check-certificate
 	echo "Extracting XDAIS..."
 	tar -zxf xdais_$XDAIS_VERSION.tar.gz -C component-sources/
 	mv xdais*.tar.gz component-sources/
 fi
 if [ ! -d "component-sources/bios_$BIOS_VERSION" ]; then
-	wget -nc $BIOS_WGET_URL
+	wget -nc $BIOS_WGET_URL --no-check-certificate
 	echo "Installing BIOS..."
 	chmod +x bios_$BIOS_VERSION.run
 	./bios_$BIOS_VERSION.run --prefix ./component-sources/ --mode unattended
 	mv bios_*.run component-sources/
 fi
 if [ ! -d "component-sources/xdctools_${XDCTOOLS_VERSION}_core" ]; then
-	wget -nc $XDCTOOLS_WGET_URL
+	wget -nc $XDCTOOLS_WGET_URL --no-check-certificate
 	echo "Installing XDC tools..."
 	unzip xdctools_*.zip -d ./component-sources/
         mv xdctools_*.zip ./component-sources/.

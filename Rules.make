@@ -5,21 +5,18 @@ DEFAULT_LINUXKERNEL_CONFIG=omap2plus_defconfig
 DEFAULT_UBOOT_CONFIG=dra7xx_evm_config
 DEFAULT_IPUMM_CONFIG=vayu_smp_config
 DEFAULT_DSPDCE_CONFIG=vayu_config
-BIOS_VERSION=6_73_00_12
-IPC_VERSION=3_50_03_03
+BIOS_VERSION=6_76_02_02
+IPC_VERSION=3_50_04_07
 IPUMM_VERSION=3_00_15_00
-DSPDCE_VERSION=1_00_00_08
 DUCATI_FW_GEN=dra7xx-m4-ipu2.xem4
 DUCATI_FW=dra7-ipu2-fw.xem4
-DSP_FW_GEN=dra7xx-c66x-dsp.xe66
-DSP_FW=dra7-dsp1-fw.xe66
-XDC_VERSION=xdctools_3_50_07_20_core
+XDC_VERSION=xdctools_3_55_02_22_core
 FC_VERSION=framework_components_3_40_02_07
 PLATFORM_IPC=DRA7XX
-LINUXUTILS_VERSION=4_15_00_02
+LINUXUTILS_VERSION=4_16_00_00
 
 # Cross compiler used for building linux and u-boot
-TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
+TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
 CROSS_COMPILE_PREFIX=$(TOOLCHAIN_INSTALL_DIR)/bin/arm-linux-gnueabihf-
 
 # The installation directory of the SDK.
@@ -39,7 +36,7 @@ UBOOT_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/board-support/u-boot
 TMS470CGTOOLPATH_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/ti-devkit/ti-cgt-arm_5.2.7
 
 # The directory where the Code Gen is installed.
-CODEGEN_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/ti-devkit/ti-cgt-c6000_8.1.0
+CODEGEN_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/ti-devkit/ti-cgt-c6000_8.3.2
 
 # The directory that points to the bios tools directory.
 BIOSTOOLSROOT_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/component-sources
@@ -55,9 +52,6 @@ IPC_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/component-sources/ipc_$(IPC_VERSION)
 
 # The directory that points to your ipumm source directory.
 IPUMM_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/component-sources/ipumm_$(IPUMM_VERSION)
-
-# The directory that points to your dsp source directory.
-DSPDCE_INSTALL_DIR=$(PSDKLA_INSTALL_DIR)/component-sources/dspdce_$(DSPDCE_VERSION)
 
 # Directory where linux utils is installed
 LINUXUTILS_INSTALL_DIR=${PSDKLA_INSTALL_DIR}/component-sources/linuxutils_${LINUXUTILS_VERSION}
@@ -87,16 +81,6 @@ IPUMM_BUILD_VARS = BIOSTOOLSROOT=$(BIOSTOOLSROOT_INSTALL_DIR) \
 	FCVERSION=$(FC_VERSION) \
 	TRACELEVEL=1 \
 	HWVERSION=$(REVISION)
-
-# DSPDCE build variables
-DSPDCE_BUILD_VARS = BIOSTOOLSROOT=$(BIOSTOOLSROOT_INSTALL_DIR) \
-    IPCSRC=$(IPC_INSTALL_DIR) \
-    IPCVERSION=ipc_$(IPC_VERSION) \
-    BIOSVERSION=bios_$(BIOS_VERSION) \
-    XDCVERSION=$(XDC_VERSION) \
-    FCVERSION=$(FC_VERSION) \
-    C66XCGTOOLSPATH=$(CODEGEN_INSTALL_DIR) \
-    PLATFORM=$(REVISION)
 
 # CMEM build variables
 # Arguments for building the kernel module
