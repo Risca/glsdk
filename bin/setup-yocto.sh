@@ -2,7 +2,7 @@
 
 TOOLS_DOWNLOAD_LOCATION=/sdk/tools
 
-GCC_LINARO_TOOLCHAIN_PATH=$TOOLS_DOWNLOAD_LOCATION/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin/
+GCC_ARM_TOOLCHAIN_PATH=$TOOLS_DOWNLOAD_LOCATION/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin/
 PSDKLA=$(pwd)
 
 echo "[PSDKLA]>"
@@ -26,10 +26,16 @@ cp bin/build-core-sdk.sh yocto-layers
 echo "[PSDKLA]> cd yocto-layers"
 cd yocto-layers
 
-if [ -d "$GCC_LINARO_TOOLCHAIN_PATH" ]; then
-    echo "SUCCESS: GCC Linaro tool chain path has been set correctly"
+echo ["PSDKLA]>  mkdir configs/psdkla/. "
+mkdir configs/psdkla/
+
+echo ["PSDKLA]>  cp ../config/*.* configs/psdkla/. "
+cp ../config/*.* configs/psdkla/.
+
+if [ -d "$GCC_ARM_TOOLCHAIN_PATH" ]; then
+    echo "SUCCESS: GCC Arm tool chain path has been set correctly"
 else
-    echo "ERROR: GCC Linaro tool chain does not exist at $GCC_LINARO_TOOLCHAIN_PATH. Please download or set the path correct."
+    echo "ERROR: GCC Arm tool chain does not exist at $GCC_ARM_TOOLCHAIN_PATH. Please download or set the path correct."
     exit 1
 fi
 
@@ -51,8 +57,8 @@ echo "[PSDKLA]> Building on `hostname` running `uname -a`"
 echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
-echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/coresdk/coresdk-2018.05-config.txt"
-./oe-layertool-setup.sh -f configs/coresdk/coresdk-2018.05-config.txt
+echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/psdkla-06_00_00_00_dra7xx.txt"
+./oe-layertool-setup.sh -f configs/psdkla/psdkla-06_00_00_00_dra7xx.txt
 
 echo "[PSDKLA]> cd build"
 cd ${PSDKLA}/yocto-layers/build
