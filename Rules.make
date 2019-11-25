@@ -16,7 +16,7 @@ PLATFORM_IPC=DRA7XX
 LINUXUTILS_VERSION=4_16_00_00
 
 # Cross compiler used for building linux and u-boot
-TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+TOOLCHAIN_INSTALL_DIR=$(HOME)/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
 CROSS_COMPILE_PREFIX=$(TOOLCHAIN_INSTALL_DIR)/bin/arm-linux-gnueabihf-
 
 # The installation directory of the SDK.
