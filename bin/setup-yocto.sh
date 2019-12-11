@@ -58,7 +58,7 @@ echo "[PSDKLA]> Starting Yocto build at `date`"
 echo "[PSDKLA]>"
 
 echo "[PSDKLA]> ./oe-layertool-setup.sh -f configs/psdkla/psdkla-06_00_00_00_dra7xx.txt"
-./oe-layertool-setup.sh -f configs/psdkla/psdkla-06_00_00_00_dra7xx.txt
+./oe-layertool-setup.sh -f configs/psdkla/psdkla-06_00_00_03_dra7xx.txt
 
 echo "[PSDKLA]> cd build"
 cd ${PSDKLA}/yocto-layers/build
