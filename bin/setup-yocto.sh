@@ -6,8 +6,8 @@ if [ -d "yocto-layers" ]; then
 	echo "[GLSDK]> yocto-layers is present. Proceed to next step"
 else 
 	echo "[GLSDK]> yocto-layers is not present. Cloning it."
-	echo "[GLSDK]> git clone git://arago-project.org/git/projects/oe-layersetup.git yocto-layers"
-	git clone git://arago-project.org/git/projects/oe-layersetup.git yocto-layers
+	echo "[GLSDK]> git clone https://github.com/Risca/glsdk-oe-layersetup.git yocto-layers"
+	git clone https://github.com/Risca/glsdk-oe-layersetup.git yocto-layers
 fi
 
 echo "[GLSDK]> Copying yocto build-scripts to yocto-layers"

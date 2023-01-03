@@ -19,9 +19,9 @@ fetch_repo() {
     export PATH=$cwd:$PATH
     check_status
     echo "Successfully extracted the repo tool to $cwd"
-    echo "Proceeding with repo init -u git://git.ti.com/glsdk/release-manifest.git"
+    echo "Proceeding with repo init -u https://github.com/Risca/glsdk-release-manifest.git"
     echo " "
-    repo init --no-clone-bundle --repo-rev=v2.6 -u git://git.ti.com/glsdk/release-manifest.git -m omap5-uevm_6_03_00_01.xml --no-repo-verify
+    repo init --no-clone-bundle --repo-rev=v2.6 -u https://github.com/Risca/glsdk-release-manifest.git -m omap5-uevm_6_03_00_01.xml --no-repo-verify
     check_status
     echo
 }
